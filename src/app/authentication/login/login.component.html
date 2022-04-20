@@ -1,0 +1,59 @@
+<!-- left side div -->
+<div class="container-lg" >
+    <div style="width: 50%; float:left;">
+        <div class="pt-5">
+            <div class="d-flex align-items-center mb-3">
+                <i class="fa fa-user" style="width:20px; color: #ff7900;" ></i>
+                <h3 class="custom-h3-mobile mb-0" style="color: #ff7900;">Account</h3>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert" *ngIf="currDiv == 'nice'">
+                <span class="alert-icon"><span class="visually-hidden">Failed</span></span>
+                <p>{{alert}}</p>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button> -->
+            </div>
+
+              
+        <form #userForm="ngForm" (ngSubmit)="login('nice',user)">
+            <div class="pt-4 mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              [(ngModel)]="user.username" name="username"
+                #username="ngModel" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1"
+              [(ngModel)]="user.password" name="password"
+                #password="ngModel" required>
+            </div>
+
+            
+            <div class="pt-3">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">LOGIN</button>
+            </div>
+          </form>
+
+          <button class="o-link-arrow-custom btn btn-link btn-inverse px-0 pt-3" routerLink="/resetPassword"> Did you forget your password ?</button>
+            <br>
+        </div>   
+    </div>
+
+    <!-- right side div -->
+        <div style="float: right;position: fixed;margin-left: 60%;">
+            <div class="" style="background-color: black; color: white;height: 1000px;">
+                <div class="align-items-center"><div class="col px-5">
+                    <div class="h4 pt-5">
+                        <span class="text-primary d-block mb-5 mt-5">By logging into your account you can join our network easily.</span>
+                        <span class="d-block my-4">A new User?</span>
+                        <span>Make your account right now.</span>
+                    </div>
+                    <div class="d-flex mt-5">
+                        <a class="btn btn-secondary btn-info btn-block" href="" style="border-color: white; width: 100%;" routerLink="/register">Make an account</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

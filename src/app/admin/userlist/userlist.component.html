@@ -1,0 +1,60 @@
+<div class="container table-responsive">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">username</th>
+        <th scope="col">email</th>
+        <th scope="col">active</th>
+        <th scope="col">password</th>
+        <th scope="col">createdAt</th>
+        <th scope="col">updatedAt</th>
+        <th scope="col">node</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of user, let i = index">
+        <th scope="row">{{u._id}}</th>
+        <td>{{u.username}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.active}}</td>
+        <td>{{u.password}}</td>
+        <td>{{u.createdAt}}</td>
+        <td>{{u.updatedAt}}</td>
+        <td>{{u.node}}</td>
+        <td><button>e</button><button>d</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container table-responsive">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">username</th>
+          <th scope="col">email</th>
+          <th scope="col">active</th>
+          <th scope="col">password</th>
+          <th scope="col">createdAt</th>
+          <th scope="col">updatedAt</th>
+          <th scope="col">node</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of user, let i = index">
+          <th scope="row">{{u._id}}</th>
+          <td>{{u.username}}</td>
+          <td>{{u.email}}</td>
+          <td>{{u.active}}</td>
+          <td>{{u.password}}</td>
+          <td>{{u.createdAt}}</td>
+          <td>{{u.updatedAt}}</td>
+          <td>{{u.node}}</td>
+          <td><button>e</button></td>
+          <td><button>d</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

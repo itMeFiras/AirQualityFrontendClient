@@ -1,0 +1,100 @@
+<div class="container-lg mt-3" >
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert" *ngIf="currDiv == 'nice'">
+            <span class="alert-icon"><span class="visually-hidden">Failed</span></span>
+            <p>{{alert}}</p>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button> -->
+        </div>
+
+
+        <form #userForm="ngForm" (ngSubmit)="edit('nice',user)" class="bf">
+            <h5>Informations</h5>
+            <div container  style="display: flex; height: 100px;">
+                <!-- username div -->
+                <!-- <div class="form-group container" style="width:35%;">
+                    <label for="form-control-5" class="form-label is-required">Username</label>
+                    <input class="form-control" type="text" id="form-control-1"
+                    [(ngModel)]="user.username" name="username"
+                    #username="ngModel" required minlength="3">
+                    <div  style="color: red" *ngIf="username.invalid && username.touched">
+                        3 chars min
+                    </div>
+                </div> -->
+                
+                <!-- firstname div -->
+                <div class="container" style="width:50%;">
+                    <label for="form-control-5" class="form-label is-required">First name</label>
+                    <input class="form-control" type="text" id="form-control-2"
+                    [(ngModel)]="user.firstname" name="firstname"
+                    #firstname="ngModel" required minlength="3">
+                    <div  style="color: red" *ngIf="firstname.invalid && firstname.touched">
+                        3 chars min
+                    </div>
+                </div>
+
+                <!-- lastname div -->
+                <div class="container" style="width:50%;">
+                    <label for="form-control-5" class="form-label is-required">Last name</label>
+                    <input class="form-control" type="text" id="form-control-3"
+                    [(ngModel)]="user.lastname" name="lastname"
+                    #lastname="ngModel" required minlength="3">
+                    <div  style="color: red" *ngIf="lastname.invalid && lastname.touched">
+                        3 chars min
+                    </div>
+                </div>
+            </div>
+
+            <!-- email div -->
+            <div class="container" style="width:100%; height: 100px;">
+                <label for="form-control-5" class="form-label is-required">Email</label>
+                <input class="form-control" type="email" id="form-control-5"
+                [(ngModel)]="user.email" name="email"
+                    #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$"/>
+                    <div  style="color: red" *ngIf="email.invalid && email.touched">
+                        Invalid email
+                    </div>
+            </div>
+
+            <!-- submit div -->
+            <div>
+                <button type="submit" class="btn btn-primary" style="width: 70%;margin-left: 15%;" 
+                [disabled]="!userForm.valid" >Edit Informations</button>
+            </div>
+            
+        </form>
+
+
+        <form #userForm="ngForm" (ngSubmit)="editpass('nice',user)" class="bf">
+            <h5>Password</h5>
+            <div container  style="display: flex; height: 100px;">
+                <!-- oldpass div -->
+                <div class="container" style="width:50%;">
+                    <label for="form-control-5" class="form-label is-required">Old Password</label>
+                    <input class="form-control" type="password" id="form-control-2"
+                    [(ngModel)]="user.password" name="password"
+                    #password="ngModel" required minlength="3">
+                    <div  style="color: red" *ngIf="password.invalid && password.touched">
+                        3 chars min
+                    </div>
+                </div>
+
+                <!-- newpass div -->
+                <div class="container" style="width:50%;">
+                    <label for="form-control-5" class="form-label is-required">New Password</label>
+                    <input class="form-control" type="password" id="form-control-3"
+                    [(ngModel)]="user.newpass" name="newpass"
+                    #newpass="ngModel" required minlength="3">
+                    <div  style="color: red" *ngIf="newpass.invalid && newpass.touched">
+                        3 chars min
+                    </div>
+                </div>
+            </div>
+
+            <!-- submit div -->
+            <div>
+                <button type="submit" class="btn btn-primary" style="width: 70%;margin-left: 15%;" 
+                [disabled]="!userForm.valid" >Edit Password</button>
+            </div>
+            
+        </form>
+</div>
