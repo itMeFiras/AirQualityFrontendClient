@@ -20,6 +20,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
 import { ValidatorDirective } from './models/validator.directive';
 import { UniqueNameDirective } from './models/unique-name.directive';
+import { SidebarComponent } from './views/sidebar/sidebar.component';
 
 const appRoutes : Routes = [
   {path: 'login', component:LoginComponent},
@@ -47,6 +48,7 @@ const appRoutes : Routes = [
     EditProfileComponent,
     ValidatorDirective,
     UniqueNameDirective,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

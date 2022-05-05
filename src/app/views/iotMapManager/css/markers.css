@@ -1,0 +1,198 @@
+/*
+* Software Name : IotMapManager
+* Version: 2.6.8
+* SPDX-FileCopyrightText: Copyright (c) 2020 - 2022 Orange
+* SPDX-License-Identifier: MIT
+*
+* This software is distributed under the MIT License,
+* the text of which is available at https://github.com/Orange-OpenSource/IOT-Map-Component/blob/master/LICENSE
+* or see the "license.txt" file for more details.
+*
+* Author: S. Gateau
+* Software description: provide markers, tabs, clusters and paths dedicated to iot projects using mapping
+*/
+
+/* markers.css */
+
+.iotmap-markericon{
+  position: relative;
+  width: 0px;
+  height: 0px;
+  box-sizing: border-box;
+}
+.iotmap-markericon .iotmap-svgMarker {
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index: 10;
+}
+
+.iotmap-markericon .iotmap-directionUnselected {
+  position: absolute;
+  top:-30px;
+  left:-30px;
+  width: 70px;
+  height: 70px;
+  z-index: 40;
+}
+
+.iotmap-markericon .iotmap-directionSelected {
+  position: absolute;
+  top:-20px;
+  left:-20px;
+  width: 70px;
+  height: 70px;
+  z-index: 40;
+}
+
+
+.iotmap-markericon > .iotmap-innerspan {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 25;
+  text-align: center;
+  font-family: "Helvetica Neue", 'helvetica';
+}
+
+.iotmap-markericon .iotmap-labelUnselected{
+  width:20px;
+  height:20px;
+  font-size:18px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.iotmap-markericon .iotmap-labelSelected{
+  width:40px;
+  height:40px;
+  font-size:30px;
+  line-height:45px;
+  font-weight: bold;
+}
+
+.iotmap-markericon .iotmap-iconUnselected{
+  width:20px;
+  height:20px;
+  font-size:18px;
+  line-height: 20px;
+}
+
+.iotmap-markericon .iotmap-iconSelected{
+  width:40px;
+  height:40px;
+  font-size:26px;
+  line-height:45px;
+}
+
+.iotmap-markericon .iotmap-imgUnselected{
+  width:20px;
+  height:20px;
+  font-size:18px;
+  line-height: 20px;
+}
+
+.iotmap-markericon .iotmap-imgSelected{
+  width:40px;
+  height:40px;
+  font-size:26px;
+  line-height:45px;
+}
+
+/********************
+  CLUSTERS
+ ********************/
+
+.iotmap-clustericon{
+  position: relative;
+  width: 0px;
+  height: 0px;
+}
+
+.iotmap-clustericon > svg{
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index: 10;
+}
+
+.iotmap-clustericon .iotmap-clusterShortLabel{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:50px;
+  height:50px;
+  z-index: 25;
+  font-size: 18px;
+  font-family: "Helvetica Neue", 'helvetica';
+  font-weight: bold;
+  line-height:50px;
+  text-align: center;
+}
+
+.iotmap-clustericon .iotmap-clusterMidLabel{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:50px;
+  height:50px;
+  z-index: 25;
+  font-size: 14px;
+  font-family: "Helvetica Neue", 'helvetica';
+  font-weight: bold;
+  line-height:50px;
+  text-align: center;
+}
+
+.iotmap-clustericon .iotmap-clusterLongLabel{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:50px;
+  height:50px;
+  z-index: 25;
+  font-size: 13px;
+  font-family: "Helvetica Neue", 'helvetica';
+  font-weight: bold;
+  line-height:50px;
+  text-align: center;
+}
+
+.iotmap-clustericon .iotmap-clusterShadow{
+  position: absolute;
+  top:-9px;
+  left:-9px;
+  width: 67px;
+  height: 67px;
+  z-index: 5;
+}
+
+.iotmap-clusteropacity {
+  fill-opacity: 0.5;
+}
+
+.iotmap-clustericon:hover > .iotmap-clusteropacity{
+  fill-opacity: 1;
+}
+
+.iotmap-usermarkericon{
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.iotmap-usermarkericon > svg{
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index: 10;
+}
+
+.iotmap-usermarkericon .iotmap-usermarkershadow {
+  position: absolute;
+  top:-14px;
+  left:-14px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+}
