@@ -19,8 +19,8 @@ export class IotMapConfig {
    *** Default configuration definition :
    */
   map: any = { // eslint-disable-line @typescript-eslint/no-explicit-any
-    defaultLat: 44.8888929,
-    defaultLng: 4.8849108,
+    defaultLat: 36.8349084,
+    defaultLng: 10.2432562,
     defaultZoomLevel: 15,
     defaultLayerName: 'default',
     clusterRadius: 100,

@@ -7,11 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class NodesService {
 
-  readonly ROOT_URL = "http://localhost:8800/api/pins";
+  readonly ROOT_URL = "http://localhost:8800/api/";
 
   constructor(private http : HttpClient) { }
 
   findall(): Observable<any> {
-    return this.http.get(this.ROOT_URL).pipe()
+    return this.http.get(this.ROOT_URL+'pins').pipe()
    }
+
+  findOne(id : any){
+    return this.http.get(this.ROOT_URL+'pins/list/'+id)
+  }
+
+  getLastData(mac : any): Observable<any>{
+    return this.http.get(this.ROOT_URL+'node/lastmacdata?MAC='+mac)
+  }
+
+  
 }

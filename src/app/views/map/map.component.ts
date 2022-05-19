@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { LatLngBounds } from 'leaflet'
+import { LatLngBounds, map, point } from 'leaflet'
 import { NodesService } from 'src/app/models/nodes.service';
 import {
   IotMapManager,
@@ -29,15 +29,34 @@ export class MapComponent implements AfterViewInit {
   iotMapAreaManager: IotMapAreaManager = new IotMapAreaManager(this.commonIotMap, this.conf)
   title = 'IotMap';
 
-  //IotMapConfig.setConfig(defaultLat:10)
-
-
   lists: any[] = [];
   constructor(private nodeservice : NodesService) { }
 
   ngOnInit(): void {
     this.getPins()
+
+    this.conf.setConfig(
+     {
+       map : {defaultLat:36.8349084,defaultLng: 10.2432562}
+     }
+    )
+
   }
+
+  clickednode : any
+  clickedmac : any = null
+  clickedinfo : any
+    MAC:String=''
+    co2:String=''
+    light:String=''
+    pm10:String=''
+    pm25:String=''
+    pressure:String=''
+    sound:String=''
+    temperature:String=''
+    tvoc:String=''
+    received_at:String=''
+
 
   nodeList :any = [] ;
   PoiID:string="";
@@ -58,18 +77,23 @@ export class MapComponent implements AfterViewInit {
           },
           //template: 'square',
           layer: 'Orange',
-          status: 'active', // 'warning','alert'
-          tab: {
-            content: '<span class="iotmap-icons-vehicle"></span>'
-          },
+          status: 'neutiral', // 'warning','alert'
+          // tab: {
+          //   content: '<span class="iotmap-icons-vehicle"></span>'
+          // },
           inner: {
-            label: 'aa',
-            color: '#ff0000'
+            icon: '',
+            color: 'black'
           },
           popup: {
             title: val.title,
             body: val.desc,
-            //console.log(val._id)
+          },
+          shape: {
+            type: ShapeType.circle,
+            anchored: true,
+            plain: true,
+            color : "#ff7900",
           },
         }
         
@@ -293,12 +317,43 @@ export class MapComponent implements AfterViewInit {
       console.log('map bounds changed: [' + coord.getNorthEast().lat + ', ' + coord.getNorthEast().lng + '] / [' + coord.getSouthWest().lat + ', ' + coord.getSouthWest().lng + ']')
     }
 
+
+    this.commonIotMap.onEltClick = (event) =>{
+      console.log(event)
+
+      this.nodeservice.findOne(event).subscribe(res => {
+        this.clickednode = res
+        console.log(this.clickednode)
+        this.clickedmac = this.clickednode.MAC
+
+
+        this.nodeservice.getLastData(this.clickedmac).subscribe(res => {
+          this.clickedinfo = res[0]
+          console.log(this.clickedinfo)
+          this.co2 = this.clickedinfo.co2
+          this.MAC= this.clickedinfo.MAC
+          this.light= this.clickedinfo.light
+          this.pm10= this.clickedinfo.pm10
+          this.pm25= this.clickedinfo.pm25
+          this.pressure= this.clickedinfo.pressure
+          this.sound= this.clickedinfo.sound
+          this.temperature= this.clickedinfo.temperature
+          this.tvoc= this.clickedinfo.tvoc
+          this.received_at = this.clickedinfo.received_at.slice(0,10)+' '+this.clickedinfo.received_at.slice(11,19)
+        })
+  
+      })
+
+      
+    }
     
 
     this.commonIotMap.init('iotMap')
     this.iotMapMarkerManager.addMarkers(this.markersList)
     // Do the same when you want to override the zoom on a clicked cluster
     this.iotMapClusterManager.updateCluster('cluster 1', { markersArea: new LatLngBounds([44.880, 4.89], [44.885, 4.9])})
+
+
   }
 
 

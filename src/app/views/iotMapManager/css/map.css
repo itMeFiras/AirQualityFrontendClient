@@ -17,7 +17,7 @@
 /* layers icon */
 .leaflet-top.leaflet-right .leaflet-control-layers:nth-child(1) .leaflet-control-layers-toggle {
   background-image: url('../img/Layers.png');
-  background-size: 36px;
+  background-size: 30px;
 }
 
 /* layer control border */
@@ -36,7 +36,7 @@
 
 .leaflet-top.leaflet-left .leaflet-control-zoom-in:hover, .leaflet-top.leaflet-left  .leaflet-control-zoom-out:hover {
   background-color: black;
-  color: white;
+  color: #FF7900;
 }
 .leaflet-top.leaflet-left .leaflet-control-zoom-in:active, .leaflet-top.leaflet-left  .leaflet-control-zoom-out:active {
   background-color: #FF7900;

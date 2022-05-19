@@ -21,6 +21,8 @@ import { EditProfileComponent } from './views/edit-profile/edit-profile.componen
 import { ValidatorDirective } from './models/validator.directive';
 import { UniqueNameDirective } from './models/unique-name.directive';
 import { SidebarComponent } from './views/sidebar/sidebar.component';
+import { HomeComponent } from './views/home/home.component';
+import { StatsComponent } from './views/stats/stats.component';
 
 const appRoutes : Routes = [
   {path: 'login', component:LoginComponent},
@@ -30,6 +32,7 @@ const appRoutes : Routes = [
   {path: 'profile',component:ProfileComponent},
   {path: 'map', component:MapComponent},
   {path: 'profile/edit/:id',component:EditProfileComponent},
+  {path: 'home',component:HomeComponent},
 
 ]
 
@@ -49,6 +52,8 @@ const appRoutes : Routes = [
     ValidatorDirective,
     UniqueNameDirective,
     SidebarComponent,
+    HomeComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,
