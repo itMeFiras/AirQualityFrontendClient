@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Nodes } from './nodes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class NodesService {
 
   getLastData(mac : any): Observable<any>{
     return this.http.get(this.ROOT_URL+'node/lastmacdata?MAC='+mac)
+  }
+
+  getMacData(mac:any): Observable<any>{
+    return this.http.get(this.ROOT_URL+'node/macdata2?mac='+mac)
   }
 
   

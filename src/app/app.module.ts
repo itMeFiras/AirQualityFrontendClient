@@ -33,6 +33,7 @@ const appRoutes : Routes = [
   {path: 'map', component:MapComponent},
   {path: 'profile/edit/:id',component:EditProfileComponent},
   {path: 'home',component:HomeComponent},
+  {path: 'node/:id',component:StatsComponent}
 
 ]
 

@@ -96,8 +96,9 @@ export class MapComponent implements AfterViewInit {
             color : "#ff7900",
           },
         }
-        
-        this.markersList.push(a)
+        if (val.active == "active"){
+          this.markersList.push(a)
+        }
         this.iotMapMarkerManager.updateAllMarkers(this.markersList)
         
       }
