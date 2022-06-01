@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Nodes } from './nodes.model';
+import { Request } from './request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,8 @@ export class NodesService {
     return this.http.get(this.ROOT_URL+'node/macdata2?mac='+mac)
   }
 
+  makePinRequest(data:Request):Observable<Request>{
+    return this.http.post<Request>(this.ROOT_URL+'pins/request',data)
+  }
   
 }

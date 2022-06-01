@@ -23,6 +23,8 @@ import { UniqueNameDirective } from './models/unique-name.directive';
 import { SidebarComponent } from './views/sidebar/sidebar.component';
 import { HomeComponent } from './views/home/home.component';
 import { StatsComponent } from './views/stats/stats.component';
+import { RequestComponent } from './views/request/request.component';
+import { MyNodesComponent } from './views/my-nodes/my-nodes.component';
 
 const appRoutes : Routes = [
   {path: 'login', component:LoginComponent},
@@ -33,7 +35,8 @@ const appRoutes : Routes = [
   {path: 'map', component:MapComponent},
   {path: 'profile/edit/:id',component:EditProfileComponent},
   {path: 'home',component:HomeComponent},
-  {path: 'node/:id',component:StatsComponent}
+  {path: 'node/:id',component:StatsComponent},
+  {path: 'myNodes',component:MyNodesComponent},
 
 ]
 
@@ -55,6 +58,8 @@ const appRoutes : Routes = [
     SidebarComponent,
     HomeComponent,
     StatsComponent,
+    RequestComponent,
+    MyNodesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,90 @@
+<div class="container mt-2">
+    <div>
+        <form #userForm="ngForm" (ngSubmit)="makeRequest(request)">
+            <div>
+                <input type="text" class="form-control disabled" id="exampleInputUsername" aria-describedby="UsernameHelp"
+                [(ngModel)]="request.username" name="username" value="{{pname}}"
+                  #username="ngModel">
+              </div>
+
+            <div class="pt-4 mb-3">
+              <label for="exampleInputEmail1" class="form-label">Personal or association Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              [(ngModel)]="request.email" name="email"
+                #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$">
+                <div  style="color: red" *ngIf="email.invalid && email.touched">
+                    Invalid Email 
+                </div>
+            </div>
+
+            <div class="mb-3" style="display: flex;">
+            <div style="width:45%">
+              <label for="exampleInputTitle" class="form-label">Node title</label>
+              <input type="text" class="form-control" id="exampleInputTitle"
+              [(ngModel)]="request.title" name="title"
+                #title="ngModel" required minlength="3">
+                <div  style="color: red" *ngIf="title.invalid && title.touched">
+                    Required & min 3 chars 
+                </div>
+            </div>
+            <div style="width:45%;margin-left: 10%;">
+                <label for="exampleInputMAC" class="form-label">MAC address</label>
+                <input type="text" class="form-control" id="exampleInputMAC"
+                [(ngModel)]="request.MAC" name="MAC"
+                  #MAC="ngModel" required minlength="3">
+                  <div  style="color: red" *ngIf="MAC.invalid && MAC.touched">
+                    Required & min 3 chars 
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputDescription" class="form-label">Node description</label>
+                <textarea class="form-control" id="exampleInputDescription"
+                [(ngModel)]="request.desc" name="desc"
+                  #desc="ngModel" required minlength="10"></textarea>
+                  <div  style="color: red" *ngIf="desc.invalid && desc.touched">
+                    Required & min 10 chars 
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputLocation" class="form-label">Node location</label>
+                <input class="form-control" id="exampleInputLocation"
+                [(ngModel)]="request.location" name="location"
+                  #location="ngModel" required minlength="3">
+                  <div  style="color: red" *ngIf="location.invalid && location.touched">
+                    Required & min 3 chars 
+                </div>
+            </div>
+
+            <div class="mb-3" style="display: flex;">
+                <div style="width:45%">
+                  <label for="exampleInputLatitude" class="form-label">Latitude</label>
+                  <input type="number" class="form-control" id="exampleInputLatitude"
+                  [(ngModel)]="request.lat" name="lat"
+                    #lat="ngModel" required min="-90" max="90">
+                    <div  style="color: red" *ngIf="lat.invalid && lat.touched">
+                        Invalid
+                    </div>
+                </div>
+                <div style="width:45%;margin-left: 10%;">
+                    <label for="exampleInputLongitude" class="form-label">Longitude</label>
+                    <input type="number" class="form-control" id="exampleInputLongitude"
+                    [(ngModel)]="request.long" name="long"
+                      #long="ngModel" required min="-180" max="180">
+                      <div  style="color: red" *ngIf="long.invalid && long.touched">
+                        Invalid
+                    </div>
+                  </div>
+                </div>
+
+            
+            <div class="pt-3">
+                <button type="submit" class="btn btn-primary" style="width: 100%;"
+                [disabled]="!userForm.valid">Add new request</button>
+            </div>
+          </form>
+        
+    </div>
+</div>
