@@ -29,8 +29,19 @@ export class NodesService {
     return this.http.get(this.ROOT_URL+'node/macdata2?mac='+mac)
   }
 
+
+  //request service
   makePinRequest(data:Request):Observable<Request>{
     return this.http.post<Request>(this.ROOT_URL+'pins/request',data)
+  }
+
+  getMyRequests(auth_token: any){
+
+    const headers  = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.http.get(this.ROOT_URL+'pins/myrequests' ,{ headers: headers  })
   }
   
 }
