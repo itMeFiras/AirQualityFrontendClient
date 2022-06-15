@@ -1,13 +1,9 @@
 <div class="container mt-2">
-    <div>
+  <h2 style="color: #ff7900;"> New Request</h2>
+  <div style="display: flex;">
+    <div style="width:50%">
         <form #userForm="ngForm" (ngSubmit)="makeRequest(request)">
-            <div>
-                <input type="text" class="form-control disabled" id="exampleInputUsername" aria-describedby="UsernameHelp"
-                [(ngModel)]="request.username" name="username" value="{{pname}}"
-                  #username="ngModel">
-              </div>
-
-            <div class="pt-4 mb-3">
+            <!-- <div class="pt-4 mb-3">
               <label for="exampleInputEmail1" class="form-label">Personal or association Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
               [(ngModel)]="request.email" name="email"
@@ -15,7 +11,7 @@
                 <div  style="color: red" *ngIf="email.invalid && email.touched">
                     Invalid Email 
                 </div>
-            </div>
+            </div> -->
 
             <div class="mb-3" style="display: flex;">
             <div style="width:45%">
@@ -87,4 +83,10 @@
           </form>
         
     </div>
+
+    
+    <div style="width:50%">
+      <app-reqmarker></app-reqmarker>
+    </div>
+  </div>
 </div>

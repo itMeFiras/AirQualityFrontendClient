@@ -38,8 +38,12 @@ export class RequestComponent implements OnInit {
   }
 
   makeRequest(request : Request){
-    this.NodesService.makePinRequest(request).subscribe((data : any) =>{
+    var currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+    var token = currentUser.token;
+
+    this.NodesService.makePinRequest(token,request).subscribe((data : any) =>{
       request = data;
+      console.log(data)
       window.location.href=`/myNodes`
     })
   }

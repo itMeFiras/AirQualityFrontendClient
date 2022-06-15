@@ -31,8 +31,12 @@ export class NodesService {
 
 
   //request service
-  makePinRequest(data:Request):Observable<Request>{
-    return this.http.post<Request>(this.ROOT_URL+'pins/request',data)
+  makePinRequest(auth_token: any,data:Request):Observable<Request>{
+    const headers  = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.http.post<Request>(this.ROOT_URL+'pins/request2',data,{ headers: headers  })
   }
 
   getMyRequests(auth_token: any){
@@ -42,6 +46,14 @@ export class NodesService {
       'Authorization': `Bearer ${auth_token}`
     })
     return this.http.get(this.ROOT_URL+'pins/myrequests' ,{ headers: headers  })
+  }
+
+  getPersonalNode(auth_token: any){
+    const headers  = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    return this.http.get(this.ROOT_URL+'pins/node' ,{ headers: headers  })
   }
   
 }

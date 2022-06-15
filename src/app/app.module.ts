@@ -25,6 +25,7 @@ import { HomeComponent } from './views/home/home.component';
 import { StatsComponent } from './views/stats/stats.component';
 import { RequestComponent } from './views/request/request.component';
 import { MyNodesComponent } from './views/my-nodes/my-nodes.component';
+import { ReqmarkerComponent } from './views/reqmarker/reqmarker.component';
 
 const appRoutes : Routes = [
   {path: 'login', component:LoginComponent},
@@ -37,7 +38,7 @@ const appRoutes : Routes = [
   {path: 'home',component:HomeComponent},
   {path: 'node/:id',component:StatsComponent},
   {path: 'myNodes',component:MyNodesComponent},
-
+  {path: 'request',component:RequestComponent},
 ]
 
 @NgModule({
@@ -60,6 +61,7 @@ const appRoutes : Routes = [
     StatsComponent,
     RequestComponent,
     MyNodesComponent,
+    ReqmarkerComponent,
   ],
   imports: [
     BrowserModule,

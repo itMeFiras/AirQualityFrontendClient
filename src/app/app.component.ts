@@ -12,6 +12,7 @@ export class AppComponent {
   /////////////
   constructor(private userService : UsersService) { }
   profile : any
+  user:any
 
   ngOnInit(): void {
     this.getProfile();
@@ -20,8 +21,12 @@ export class AppComponent {
   getProfile(){
     var currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     var token = currentUser.token;
+    console.log(token)
 
     this.userService.getprofile(token).subscribe(res => {
+      this.user = res
+      console.log("aaa")
+      console.log(this.user[0])
       if (res == "you dont have access" || res == "no token sent" ){
         this.profile = 0
       }
