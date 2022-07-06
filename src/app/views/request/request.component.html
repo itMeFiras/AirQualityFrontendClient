@@ -11,7 +11,7 @@
             <div style="width:45%">
               <label for="exampleInputTitle" class="form-label">Node title</label>
               <input type="text" class="form-control" id="exampleInputTitle"
-              [(ngModel)]="request.title" name="title"
+              [(ngModel)]="request.title" name="title" placeholder="Node name to display on the map"
                 #title="ngModel" required minlength="3">
                 <div  style="color: red" *ngIf="title.invalid && title.touched">
                     Required & min 3 chars 
@@ -20,7 +20,7 @@
             <div style="width:45%;margin-left: 10%;">
                 <label for="exampleInputMAC" class="form-label">MAC address</label>
                 <input type="text" class="form-control" id="exampleInputMAC"
-                [(ngModel)]="request.MAC" name="MAC"
+                [(ngModel)]="request.MAC" name="MAC" placeholder="Node ID/MAC"
                   #MAC="ngModel" required minlength="3">
                   <div  style="color: red" *ngIf="MAC.invalid && MAC.touched">
                     Required & min 3 chars 
@@ -31,7 +31,7 @@
             <div class="mb-3">
                 <label for="exampleInputDescription" class="form-label">Node description</label>
                 <textarea class="form-control" id="exampleInputDescription"
-                [(ngModel)]="request.desc" name="desc"
+                [(ngModel)]="request.desc" name="desc" placeholder="Node description to display on the map"
                   #desc="ngModel" required minlength="10"></textarea>
                   <div  style="color: red" *ngIf="desc.invalid && desc.touched">
                     Required & min 10 chars 
@@ -41,7 +41,7 @@
             <div class="mb-3">
                 <label for="exampleInputLocation" class="form-label">Node location</label>
                 <input class="form-control" id="exampleInputLocation"
-                [(ngModel)]="request.location" name="location"
+                [(ngModel)]="request.location" name="location" placeholder="exp: Lac1"
                   #location="ngModel" required minlength="3">
                   <div  style="color: red" *ngIf="location.invalid && location.touched">
                     Required & min 3 chars 
@@ -54,7 +54,7 @@
                   <input type="number" class="form-control" id="exampleInputLatitude"
                   [(ngModel)]="request.lat" name="lat"
                     #lat="ngModel" required min="-90" max="90" >
-                    <div  style="color: red" *ngIf="lat.invalid && location.touched">
+                    <div  style="color: red" *ngIf="lat.invalid && lat.touched">
                         Invalid
                     </div>
                 </div>
@@ -63,11 +63,11 @@
                     <input type="number" class="form-control" id="exampleInputLongitude"
                     [(ngModel)]="request.long" name="long"
                       #long="ngModel" required min="-180" max="180">
-                      <div  style="color: red" *ngIf="long.invalid && location.touched">
+                      <div  style="color: red" *ngIf="long.invalid && long.touched">
                         Invalid
                     </div>
                   </div>
-                </div>
+              </div>
 
         </div>
 

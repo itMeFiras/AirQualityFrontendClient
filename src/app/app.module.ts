@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes  } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgChartsModule } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,7 @@ import { StatsComponent } from './views/stats/stats.component';
 import { RequestComponent } from './views/request/request.component';
 import { MyNodesComponent } from './views/my-nodes/my-nodes.component';
 import { ReqmarkerComponent } from './views/reqmarker/reqmarker.component';
+import { CsvDownloadComponent } from './views/csv-download/csv-download.component';
 
 const appRoutes : Routes = [
   {path: 'login', component:LoginComponent},
@@ -62,6 +65,7 @@ const appRoutes : Routes = [
     RequestComponent,
     MyNodesComponent,
     ReqmarkerComponent,
+    CsvDownloadComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,9 +75,10 @@ const appRoutes : Routes = [
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgChartsModule
   ],
-  providers: [],
+  providers: [DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

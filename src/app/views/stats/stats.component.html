@@ -1,20 +1,10 @@
-<p>stats works!</p>
-<div class="container table-responsive">
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">1</th>
-            <th scope="col">2</th>
-            <th scope="col">3</th>
-            <th scope="col">4</th>
-            <th scope="col">5</th>
-            <th scope="col">6</th>
-            <th scope="col">7</th>
-            <th scope="col">8</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
+    <!-- ///////////////////////////////////////// -->
+   <canvas id="canvas" width="400px" height="100">{{ chart }}</canvas>
+    <div style="float: right;margin-right: 20px;" >
+      <input type="date" min="2022-04-01" [(ngModel)]="startdate">&nbsp;
+      to <input type="date" min="2022-04-01" [(ngModel)]="enddate">&nbsp;
+      <button (click)="filterdate()">filter</button> 
     </div>
+
+    <br>
+    <app-csv-download></app-csv-download>
