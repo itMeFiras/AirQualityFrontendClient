@@ -1,5 +1,3 @@
-<!-- <img src="../../../assets/map.png" role="img" alt="map" loading="lazy" style="height:600px; margin-left: 400px;">  -->
-<!--The content below is only a placeholder and can be replaced.-->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -16,132 +14,127 @@
     <div class="sidebar">
 
         <div *ngIf="clickedinfo == null">
-            <h2 class="rotate" style="color: gray;">No node selected</h2>
+            <label>No node selected</label>
         </div>
 
+            <div *ngIf="clickedinfo !null">
+                <div class="text">
+                    Last Received :
+                    {{received_at}}
+                </div>
 
-            
-
-            <div *ngIf="clickedinfo !null" style=" text-align: center;">
-                <div style="height: 500px;max-height: 500px; overflow: auto;">
-
-                    <div style="font-size: 16px;font-family: Ubuntu;">
-                        Last Received :
-                        {{received_at}}
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
-                    </div>
-
+                <div style="height: 480px;max-height: 480px; overflow: auto;">
                     <!-- co2 div -->
-                    <div *ngIf="co2 !null">
-                    <svg version="1.0" width="40px" height="40px" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                        <path d="M3005 4039 c-343 -50 -645 -244 -836 -536 -26 -40 -49 -77 -51 -82 -2 -6 -34 -1 -73 11 -101 29 -323 36 -434 14 -249 -51 -477 -196 -617 -392 -90 -126 -164 -311 -179 -451 l-7 -59 -72 -12 c-250 -43 -473 -239 -563 -497 -25 -73 -27 -92 -27 -225 0 -130 3 -153 27 -225 87 -260 309 -453 577 -501 114 -20 3515 -20 3622 0 273 52 488 240 575 501 24 72 27 95 27 225 0 133 -2 152 -27 225 -89 255 -303 446 -554 495 -35 7 -63 16 -63 21 0 4 7 41 16 81 23 102 23 345 0 453 -108 502 -491 869 -989 950 -99 16 -256 18 -352 4z m427 -163 c183 -47 334 -132 475 -269 275 -266 383 -650 287 -1012 -15 -55 -26 -110 -26 -123 0 -42 27 -59 104 -66 99 -9 152 -23 238 -64 99 -46 220 -165 268 -265 147 -304 27 -658 -271 -801 -51 -25 -119 -50 -151 -55 -83 -15 -3509 -15 -3592 0 -89 16 -229 87 -296 152 -120 115 -177 239 -185 402 -9 186 41 318 172 451 112 113 217 163 387 180 44 4 73 13 83 24 10 11 19 52 25 116 16 159 53 269 135 396 156 240 421 381 715 380 112 -1 141 -6 306 -53 66 -20 89 -7 125 64 94 185 255 350 439 451 80 43 252 102 340 115 109 17 311 6 422 -23z"/>
-                        <path d="M1875 2553 c-232 -34 -369 -207 -367 -463 3 -267 126 -435 344 -471 186 -31 344 45 423 203 47 94 46 103 -12 117 -27 7 -56 14 -65 17 -13 4 -19 -2 -24 -23 -17 -71 -72 -141 -137 -174 -127 -66 -298 -4 -355 129 -46 107 -47 286 -1 392 24 55 82 114 138 138 56 24 176 21 227 -6 46 -24 100 -89 109 -134 7 -32 9 -32 108 -7 33 9 37 13 31 32 -28 93 -119 193 -207 225 -54 21 -160 33 -212 25z"/>
-                        <path d="M2758 2550 c-108 -18 -229 -102 -285 -198 -87 -149 -87 -385 0 -534 85 -145 266 -227 437 -198 190 32 314 153 355 345 50 235 -44 460 -229 546 -93 44 -178 56 -278 39z m208 -141 c60 -29 126 -105 148 -171 42 -127 28 -282 -35 -380 -54 -84 -176 -139 -272 -124 -183 30 -283 185 -257 401 12 107 33 164 77 209 89 92 226 118 339 65z"/>
-                        <path d="M3570 2088 c-48 -33 -72 -71 -74 -115 l-1 -38 48 -3 c46 -3 47 -3 47 27 0 57 77 91 128 55 17 -11 22 -25 22 -57 0 -41 -4 -46 -114 -152 -118 -114 -146 -153 -146 -205 l0 -30 180 0 180 0 0 50 0 49 -111 3 -111 3 80 69 c107 91 135 132 139 204 5 67 -17 110 -69 142 -48 29 -153 28 -198 -2z"/>
-                        </g>
-                    </svg>
-                        co2 :<br>
-                        <a class="num">{{co2}}</a><a class="unit">g</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <div *ngIf="co2 !null" class="box">
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="CO2" transform="translate(4412 -457)">
+                              <rect id="Rectangle_140" data-name="Rectangle 140" width="40" height="40" transform="translate(-4412 457)" fill="#fff" opacity="0"/>
+                              <path id="Cloud_carbon" data-name="Cloud carbon" d="M92.046,209.256c-.763,0-1.286.8-1.286,2.27s.512,2.28,1.286,2.28,1.286-.814,1.286-2.28S92.809,209.256,92.046,209.256Zm9.533,1.893a9.208,9.208,0,0,0-16.17-7.719,3.769,3.769,0,0,0-4.532,3.316,6.7,6.7,0,0,0,.819,13.343H98.437a5.022,5.022,0,0,0,3.142-8.94Zm-15.269,4.163a3.44,3.44,0,0,1-3.5-3.777,3.515,3.515,0,0,1,3.516-3.777c1.266,0,2.139.573,2.139,1.145a.73.73,0,0,1-.693.733c-.372,0-.844-.281-1.436-.281-1.045,0-1.758.844-1.758,2.22,0,1.336.713,2.16,1.808,2.16.683,0,1.135-.372,1.517-.372a.714.714,0,0,1,.653.713C88.561,214.71,87.657,215.313,86.311,215.313Zm5.725,0c-1.778,0-2.973-1.406-2.973-3.777s1.2-3.777,2.973-3.777,2.983,1.406,2.983,3.777-1.205,3.777-2.983,3.777Zm6.025,1.774H96.139c-.435,0-.65-.161-.65-.5,0-.268.328-.583.864-1.172.763-.844,1.205-1.379,1.205-1.754a.419.419,0,0,0-.408-.455c-.208,0-.4.161-.516.489-.134.368-.241.549-.529.549a.519.519,0,0,1-.536-.556,1.55,1.55,0,0,1,.335-.877,1.6,1.6,0,0,1,1.279-.616,1.411,1.411,0,0,1,1.527,1.413c0,.763-.609,1.446-1.647,2.478h1c.516,0,.77.161.77.5s-.255.5-.77.5Z" transform="translate(-4480.88 266.908)" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                          
+                        <a class="text">CO<sub>2</sub></a><br>
+                        <a class="num">{{co2}} g</a>
                     </div>
 
-                    <!-- light div -->        
-                    <svg width="40px" height="40px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" 
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);">
-                    <path fill="currentColor"d="M15 2h2v5h-2zm6.688 6.9l3.506-3.506l1.414 1.414l-3.506 3.506zM25 15h5v2h-5zm-3.312 8.1l1.414-1.413l3.506 3.506l-1.414 1.414zM15 25h2v5h-2zm-9.606.192L8.9 21.686l1.414 1.414l-3.505 3.506zM2 15h5v2H2zm3.395-8.192l1.414-1.414L10.315 8.9L8.9 10.314zM16 12a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6Z"/>
-                    </svg>    
-                        light :<br>
-                        <a class="num">{{light}}</a><a class="unit">Lx</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <!-- light div -->
+                    <div *ngIf="light !null" class="box">    
+                        &nbsp;&nbsp;    
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="Light" transform="translate(4360 -587)">
+                              <rect id="Rectangle_143" data-name="Rectangle 143" width="40" height="40" transform="translate(-4360 587)" fill="#fff" opacity="0"/>
+                              <path id="Rounded_Rectangle_1_copy_7" data-name="Rounded Rectangle 1 copy 7" d="M92.052,84.8a8.025,8.025,0,1,1-8.025,8.025A8.025,8.025,0,0,1,92.052,84.8ZM76,91.821h4.012a1,1,0,1,1,0,2.006H76a1,1,0,0,1,0-2.006Zm5.4-11.026,2.837,2.837A1,1,0,1,1,82.82,85.05l-2.837-2.837A1,1,0,1,1,81.4,80.795ZM104,82.147l-2.842,2.842a1,1,0,1,1-1.418-1.418l2.842-2.842A1,1,0,1,1,104,82.147Zm-1.417,22.8-2.836-2.828a1,1,0,0,1,1.418-1.414L104,103.529a1,1,0,1,1-1.418,1.414ZM79.99,103.595l2.841-2.833a1,1,0,0,1,1.418,1.414l-2.841,2.833a1,1,0,0,1-1.418-1.414Zm27.977-9.83-4.015,0a1,1,0,0,1,0-2.008l4.015,0a1,1,0,1,1,0,2.007ZM91.034,108.793v-4.014a1.011,1.011,0,1,1,2.022,0v4.014a1.011,1.011,0,1,1-2.022,0Zm1.959-31.976,0,4.017a1.012,1.012,0,0,1-2.023,0l0-4.017a1.012,1.012,0,1,1,2.023,0Z" transform="translate(-4432 514.196)" fill="#222" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                             
+                        <a class="text">Light</a><br>
+                        <a class="num">{{light}} Lx</a>
+                    </div>
 
                     <!-- pm10 div -->  
-                    <svg width="40px" height="40px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" 
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);">
-                    <path fill="currentColor" d="M16 7a7.66 7.66 0 0 1 1.51.15a8 8 0 0 1 6.35 6.34l.26 1.35l1.35.24a5.5 5.5 0 0 1-1 10.92H7.5a5.5 5.5 0 0 1-1-10.92l1.34-.24l.26-1.35A8 8 0 0 1 16 7m0-2a10 10 0 0 0-9.83 8.12A7.5 7.5 0 0 0 7.49 28h17a7.5 7.5 0 0 0 1.32-14.88a10 10 0 0 0-7.94-7.94A10.27 10.27 0 0 0 16 5Z"/><path fill="currentColor"/>
-                    </svg>
-                        pm10 :<br>
-                        <a class="num">{{pm10}}</a><a class="unit">µg</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <div *ngIf="pm10 !null" class="box"> 
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="PM10" transform="translate(4344 -757)">
+                              <path id="Storage_cloud_19371" d="M103.459,215.067a5.022,5.022,0,0,1-5.022,5.022H81.7a6.7,6.7,0,0,1-.819-13.343,3.769,3.769,0,0,1,4.532-3.316,9.209,9.209,0,0,1,16.17,7.719A5.013,5.013,0,0,1,103.459,215.067Z" transform="translate(-4413 567)" fill-rule="evenodd"/>
+                              <rect id="Rectangle_141" data-name="Rectangle 141" width="40" height="40" transform="translate(-4344 757)" fill="#fff" opacity="0"/>
+                            </g>
+                          </svg>                                                  
+                        <a class="text">pm10</a><br>
+                        <a class="num">{{pm10}} µg</a>
+                    </div>
 
                     <!-- pm25 div -->
-                    <svg width="40px" height="40px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" 
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);">
-                    <path fill="currentColor" d="M16 7a7.66 7.66 0 0 1 1.51.15a8 8 0 0 1 6.35 6.34l.26 1.35l1.35.24a5.5 5.5 0 0 1-1 10.92H7.5a5.5 5.5 0 0 1-1-10.92l1.34-.24l.26-1.35A8 8 0 0 1 16 7m0-2a10 10 0 0 0-9.83 8.12A7.5 7.5 0 0 0 7.49 28h17a7.5 7.5 0 0 0 1.32-14.88a10 10 0 0 0-7.94-7.94A10.27 10.27 0 0 0 16 5Z"/><path fill="currentColor"/>
-                    </svg>
-                        pm25 :<br>
-                        <a class="num">{{pm25}}</a><a class="unit">µg</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <div *ngIf="pm25 !null" class="box"> 
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="PM10" transform="translate(4344 -757)">
+                              <path id="Storage_cloud_19371" d="M103.459,215.067a5.022,5.022,0,0,1-5.022,5.022H81.7a6.7,6.7,0,0,1-.819-13.343,3.769,3.769,0,0,1,4.532-3.316,9.209,9.209,0,0,1,16.17,7.719A5.013,5.013,0,0,1,103.459,215.067Z" transform="translate(-4413 567)" fill-rule="evenodd"/>
+                              <rect id="Rectangle_141" data-name="Rectangle 141" width="40" height="40" transform="translate(-4344 757)" fill="#fff" opacity="0"/>
+                            </g>
+                          </svg>                          
+                        <a class="text">pm25</a><br>
+                        <a class="num">{{pm25}} µg</a>
+                    </div>
 
-                    <!-- pressure div -->        
-                    <svg version="1.0" width="40px" height="36px" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                        <path d="M2337 5110 c-626 -66 -1154 -315 -1587 -749 -215 -216 -356 -411 -486 -671 -344 -692 -351 -1493 -18 -2208 208 -448 590 -865 1028 -1125 772 -457 1734 -474 2511 -44 222 122 383 245 576 437 399 399 642 879 731 1445 31 201 31 560 0 755 -45 275 -116 498 -237 745 -131 267 -270 461 -484 676 -215 214 -409 353 -676 484 -246 121 -474 193 -740 235 -150 24 -479 34 -618 20z m461 -300 c517 -55 995 -283 1362 -650 543 -544 772 -1323 609 -2077 -73 -340 -251 -702 -477 -973 -539 -645 -1379 -935 -2202 -760 -570 122 -1083 473 -1414 970 -436 653 -498 1494 -162 2203 330 699 1011 1188 1783 1282 134 16 372 18 501 5z"/>
-                        <path d="M2420 4514 c-14 -2 -65 -9 -115 -15 -569 -71 -1100 -416 -1415 -919 -149 -238 -251 -539 -281 -830 -19 -191 2 -467 52 -665 75 -298 236 -607 435 -830 91 -102 124 -125 178 -125 60 0 87 18 209 138 123 122 157 169 157 223 0 72 -77 149 -149 149 -46 0 -88 -24 -153 -88 -67 -65 -50 -74 -153 78 -139 207 -244 489 -271 728 l-7 62 87 0 c107 0 156 21 186 80 25 50 25 90 0 140 -30 59 -79 80 -186 80 l-86 0 7 58 c32 272 152 560 328 790 l40 53 56 -54 c64 -63 106 -87 152 -87 72 0 149 77 149 149 0 45 -24 88 -86 151 l-54 55 53 41 c218 170 536 299 805 329 l62 7 0 -86 c0 -67 5 -96 20 -126 23 -45 80 -80 130 -80 50 0 107 35 130 80 15 30 20 59 20 126 l0 86 58 -7 c160 -19 354 -76 508 -150 83 -40 296 -174 308 -194 3 -4 -286 -214 -642 -467 -356 -252 -672 -482 -702 -511 -69 -65 -114 -139 -137 -225 -35 -134 11 -284 123 -396 147 -147 363 -181 546 -85 37 19 86 56 110 82 24 25 250 337 502 693 253 356 463 645 467 642 20 -12 154 -225 194 -308 74 -154 131 -348 150 -508 l7 -58 -86 0 c-107 0 -156 -21 -186 -80 -25 -50 -25 -90 0 -140 30 -59 79 -80 186 -80 l87 0 -7 -62 c-31 -275 -169 -614 -334 -816 l-35 -44 -56 55 c-64 63 -106 87 -152 87 -72 0 -149 -77 -149 -149 0 -54 34 -101 157 -223 122 -120 149 -138 209 -138 52 0 84 21 161 107 264 294 428 643 490 1039 23 151 23 454 0 589 -77 437 -251 780 -552 1080 -299 300 -648 478 -1075 550 -91 15 -397 28 -450 19z m773 -1326 c-5 -7 -125 -175 -266 -373 -271 -381 -283 -395 -359 -395 -44 0 -114 36 -139 71 -12 17 -23 47 -26 67 -9 66 29 100 427 382 201 143 367 259 369 260 2 0 -1 -6 -6 -12z"/>
-                        <path d="M2161 1489 c-227 -44 -391 -278 -353 -505 31 -190 175 -339 361 -374 70 -13 712 -13 782 0 186 35 330 184 361 374 38 231 -126 461 -361 506 -65 12 -727 12 -790 -1z m779 -309 c45 -23 80 -80 80 -130 0 -50 -35 -107 -80 -130 -37 -19 -58 -20 -380 -20 -322 0 -343 1 -380 20 -45 23 -80 80 -80 130 0 48 35 107 78 129 35 19 58 20 380 21 324 0 345 -1 382 -20z"/>
-                        </g>
-                    </svg>
-                        pressure :<br>
-                        <a class="num">{{pressure}}</a><a class="unit">Pa</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <!-- pressure div -->  
+                    <div *ngIf="pressure !null" class="box">       
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="Pressure" transform="translate(4324 -956)">
+                              <rect id="Rectangle_144" data-name="Rectangle 144" width="40" height="40" transform="translate(-4324 956)" fill="#fff" opacity="0"/>
+                              <path id="Control_My_Data_19371" data-name="Control_My Data_19371" d="M85.608,85.936h0a2.175,2.175,0,1,0,3.854,1.649h0l1.761-9.568ZM87.3,99.6A12.3,12.3,0,1,0,75,87.3,12.3,12.3,0,0,0,87.3,99.6ZM78.086,83.089a10.148,10.148,0,0,1,1.8-2.692l1.536,1.536a7.976,7.976,0,0,0-1.331,1.988l1.329.551-.277.669-3.338-1.383c.05-.134.1-.267.158-.4.038-.091.078-.18.119-.27Zm15.37,2.051-.277-.669,1.329-.551a7.975,7.975,0,0,0-1.331-1.987L94.713,80.4h0a10.147,10.147,0,0,1,1.8,2.692h0c.041.089.081.179.119.27.056.132.108.265.158.4Zm-7.287,4.819a2.9,2.9,0,0,1-1.759-2.666h0a2.9,2.9,0,0,1,.614-1.782l4.208-5.933a7.967,7.967,0,0,0-7.294,1.844L80.4,79.886a10.091,10.091,0,0,1,6.4-2.7h.039l.208-.008q.125,0,.251,0l.235,0,.092,0,.137.005.12.006.1.006.145.011.053,0a10.086,10.086,0,0,1,2.375.5h0q.346.118.685.26t.669.312h0A10.157,10.157,0,0,1,94.2,79.885l-1.536,1.536a7.992,7.992,0,0,0-1.169-.885l-1.321,7.176a2.9,2.9,0,0,1-4.007,2.246Z" transform="translate(-4391 889)" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                                                 
+                        <a class="text">Pressure</a><br>
+                        <a class="num">{{pressure}} Pa</a>
+                    </div>
 
-                    <!-- sound div -->  
-                    <svg version="1.0" width="60px" height="40px" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                        <path d="M3498 4414 c-15 -8 -32 -23 -38 -34 -7 -12 -10 -611 -10 -1827 l0 -1809 28 -27 c40 -38 93 -37 133 2 l29 29 0 1807 c0 1220 -3 1813 -10 1826 -12 22 -61 49 -87 49 -10 -1 -30 -7 -45 -16z"/>
-                        <path d="M1017 4006 c-17 -15 -28 -39 -32 -67 -3 -24 -5 -661 -3 -1416 l3 -1372 21 -28 c39 -52 102 -56 150 -8 l24 24 0 1416 0 1417 -29 29 c-38 38 -96 40 -134 5z"/>
-                        <path d="M2998 3751 l-33 -29 -3 -1132 c-2 -1008 -1 -1135 13 -1164 28 -59 103 -74 152 -32 l28 24 3 1139 c2 843 -1 1145 -9 1166 -13 31 -55 57 -93 57 -14 0 -40 -13 -58 -29z"/>
-                        <path d="M3994 3630 c-57 -23 -54 35 -54 -1072 l0 -1018 28 -31 c51 -57 141 -36 161 38 7 25 11 367 11 1016 0 1053 1 1024 -51 1061 -25 17 -61 20 -95 6z"/>
-                        <path d="M1509 3511 l-29 -29 0 -872 c0 -578 3 -878 10 -891 29 -53 121 -61 160 -12 20 25 20 35 20 900 l0 875 -29 29 c-22 21 -39 29 -66 29 -27 0 -44 -8 -66 -29z"/>
-                        <path d="M537 3339 c-47 -28 -47 -22 -47 -764 0 -769 -2 -743 63 -770 43 -18 82 -9 112 27 l25 30 -2 720 -3 720 -28 24 c-30 26 -87 32 -120 13z"/>
-                        <path d="M4494 3141 c-12 -5 -31 -22 -43 -37 l-22 -27 3 -530 3 -529 28 -24 c33 -28 91 -32 123 -9 44 30 45 45 42 587 l-3 518 -25 25 c-28 28 -74 39 -106 26z"/>
-                        <path d="M2497 3059 c-45 -26 -47 -43 -47 -484 0 -444 2 -459 49 -485 35 -18 88 -12 118 14 l28 24 3 428 c3 450 1 469 -42 499 -24 17 -83 19 -109 4z"/>
-                        <path d="M51 2936 c-48 -27 -50 -42 -51 -334 l0 -274 35 -35 c31 -31 40 -35 72 -30 20 4 48 18 62 32 l26 25 0 286 0 286 -33 29 c-35 32 -72 37 -111 15z"/>
-                        <path d="M4992 2878 c-20 -5 -40 -21 -53 -41 -18 -30 -19 -47 -17 -274 l3 -243 28 -27 c40 -41 99 -39 138 5 l29 32 0 244 c0 228 -1 245 -20 269 -26 33 -66 46 -108 35z"/>
-                        <path d="M1999 2821 l-29 -29 0 -226 c0 -144 4 -234 11 -250 6 -13 26 -32 44 -42 42 -22 89 -11 119 29 20 26 21 43 24 243 3 180 1 219 -13 247 -30 63 -107 77 -156 28z"/>
-                        </g>
-                    </svg>
-                        sound :<br>
-                        <a class="num">{{sound}}</a><a class="unit">dB</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <!-- sound div --> 
+                    <div *ngIf="sound !null" class="box">
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="Sound" transform="translate(4221 -1077)">
+                              <rect id="Rectangle_145" data-name="Rectangle 145" width="40" height="40" transform="translate(-4221 1077)" fill="#fff" opacity="0"/>
+                              <path id="Speech_recognition" data-name="Speech recognition" d="M257.713,239.424h-.761v.03a.761.761,0,1,1-1.522,0v-.03h-1.522V242.5a.761.761,0,0,1-1.522,0v-1.522a.761.761,0,0,1-1.522,0v-1.552h-1.522v.03a.761.761,0,1,1-1.522,0V242.5a.761.761,0,0,1-1.522,0v-3.073h0v7.638a.761.761,0,1,1-1.522,0v-3.043a.761.761,0,0,1-1.522,0v4.565a.761.761,0,1,1-1.522,0v-9.16h-1.522V242.5a.761.761,0,1,1-1.522,0v-1.522a.761.761,0,0,1-1.522,0v6.086a.761.761,0,1,1-1.522,0v-6.086a.761.761,0,0,1-1.522,0v-1.552h-1.522V242.5a.761.761,0,1,1-1.522,0v-3.043a.761.761,0,1,1-1.522,0v1.522a.761.761,0,0,1-1.522,0v-1.522a.761.761,0,1,1-1.522,0v-.03h-.761a.761.761,0,1,1,0-1.522h.762a.76.76,0,0,1,1.518,0h0v-1.491a.761.761,0,0,1,1.522,0V237.9h0a.76.76,0,0,1,1.518,0h0V234.89a.761.761,0,0,1,1.522,0V237.9h1.522v-1.491a.761.761,0,0,1,1.522,0v-6.086a.761.761,0,1,1,1.522,0v6.086a.761.761,0,0,1,1.522,0V234.89a.761.761,0,0,1,1.522,0V237.9h1.522V225.761a.761.761,0,0,1,1.522,0v7.608a.761.761,0,1,1,1.522,0v-3.043a.761.761,0,1,1,1.522,0V237.9h0V234.89a.761.761,0,0,1,1.522,0V237.9h0a.76.76,0,0,1,1.518,0h1.523v-1.491a.761.761,0,0,1,1.522,0V234.89a.761.761,0,0,1,1.522,0V237.9h1.523a.76.76,0,0,1,1.518,0h.762a.761.761,0,1,1,0,1.522Z" transform="translate(-4443 860)" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                          
+                            <a class="text">Sound</a><br>
+                            <a class="num">{{sound}} dB</a>
+                    </div> 
 
                     <!-- temperature div --> 
-                    <svg width="40px" height="40px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" 
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);">
-                    <path fill="currentColor" d="M30 18h-6a2.002 2.002 0 0 1-2-2V6a2.002 2.002 0 0 1 2-2h6v2h-6v10h6Z"/><circle cx="18" cy="4" r="2" fill="currentColor"/><path fill="currentColor" d="M10 20.184V12H8v8.184a3 3 0 1 0 2 0Z"/><path fill="currentColor" d="M9 30a6.993 6.993 0 0 1-5-11.89V7a5 5 0 0 1 10 0v11.11A6.993 6.993 0 0 1 9 30ZM9 4a3.003 3.003 0 0 0-3 3v11.983l-.332.299a5 5 0 1 0 6.664 0L12 18.983V7a3.003 3.003 0 0 0-3-3Z"/>
-                    </svg>
-                        temperature :<br>
-                        <a class="num">{{temperature}}</a><a class="unit">°C</a>
-                        <br><br><HR style="margin-left: 40px;margin-right: 40px;color:lightgray"><br>
+                    <div *ngIf="temperature !null" class="box"> 
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="Temperature" transform="translate(4221 -1198)">
+                              <rect id="Rectangle_146" data-name="Rectangle 146" width="40" height="40" transform="translate(-4221 1198)" fill="#fff" opacity="0"/>
+                              <path id="thermometer" d="M332.207,110.03a7.212,7.212,0,0,1-5.151-12.259V80.152a5.151,5.151,0,1,1,10.3,0v17.62a7.212,7.212,0,0,1-5.151,12.259ZM335.3,98.7V80.152a3.091,3.091,0,0,0-6.182,0v1.03h1.545a.515.515,0,1,1,0,1.03h-1.545v1.03h1.545a.515.515,0,1,1,0,1.03h-1.545V85.3h1.545a.515.515,0,1,1,0,1.03h-1.545V98.7a5.152,5.152,0,1,0,6.182,0Zm-3.091,7.212a3.091,3.091,0,0,1-1.566-5.756V89.96a1.566,1.566,0,1,1,3.132,0v10.193a3.091,3.091,0,0,1-1.566,5.756Z" transform="translate(-4532.995 1125)" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                                                  
+                        <a class="text">Temperature</a><br>
+                        <a class="num">{{temperature}} °C</a>
+                    </div> 
 
                     <!-- tvoc div --> 
-                    <svg width="40px" height="35px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" 
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"><g transform="rotate(-90 16 16)">
-                    <path fill="currentColor" d="m25 2l-1.414 1.414L26.172 6h-5.09a16.93 16.93 0 0 0-6.314 1.216l-4.279 1.711A14.93 14.93 0 0 1 4.92 10H2v2h2.918a16.93 16.93 0 0 0 6.314-1.216l4.279-1.711A14.93 14.93 0 0 1 21.08 8h5.09l-2.586 2.586L25 12l5-5Z"/><path fill="currentColor" d="m21 11l-1.414 1.414L22.172 15h-3.27a16.942 16.942 0 0 0-5.97 1.083l-2.566.962A14.946 14.946 0 0 1 5.099 18H2v2h3.099a16.942 16.942 0 0 0 5.969-1.083l2.566-.962A14.946 14.946 0 0 1 18.901 17h3.27l-2.585 2.586L21 21l5-5Z"/><path fill="currentColor" d="m17 20l-1.414 1.414L18.172 24h-1.575a16.988 16.988 0 0 0-5.377.872l-1.073.358a14.985 14.985 0 0 1-4.744.77H2v2h3.403a16.988 16.988 0 0 0 5.377-.872l1.073-.358a14.985 14.985 0 0 1 4.744-.77h1.575l-2.586 2.586L17 30l5-5Z"/></g>
-                    </svg>
-                        tvoc :<br>
-                        <a class="num">{{tvoc}}</a><a class="unit">g</a><br><br>
-                            
+                    <div *ngIf="tvoc !null" class="box">   
+                        &nbsp;&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <g id="tvoc" transform="translate(4117 -3441)">
+                              <rect id="Rectangle_147" data-name="Rectangle 147" width="40" height="40" transform="translate(-4117 3441)" fill="#fff" opacity="0"/>
+                              <path id="Wind" d="M118.687,195.68h-.013A4.327,4.327,0,0,1,115.6,194.4a1.7,1.7,0,1,1,2.406-2.391.955.955,0,0,0,.679.283h0a.961.961,0,0,0,.682-1.638.971.971,0,0,0-.686-.283H102.728a1.7,1.7,0,1,1,0-3.391h15.958a4.351,4.351,0,1,1,0,8.7Zm-15.959-10.624a1.7,1.7,0,1,1,0-3.391h23.257a1.625,1.625,0,1,0,0-3.249h0a1.616,1.616,0,0,0-1.148.474,1.7,1.7,0,1,1-2.4-2.4,5.017,5.017,0,1,1,3.553,8.566h-23.26Zm11.971-5.312H102.728a1.7,1.7,0,1,1,0-3.391H114.7a.961.961,0,1,0,0-1.921h0a.956.956,0,0,0-.679.283,1.7,1.7,0,1,1-2.406-2.39,4.353,4.353,0,1,1,3.088,7.419Z" transform="translate(-4280.04 3576.997) rotate(-90)" fill-rule="evenodd"/>
+                            </g>
+                          </svg>                          
+                        <a class="text">tvoc</a><br>
+                        <a class="num">{{tvoc}} g</a>
+                    </div> 
 
                 </div>
-                    <div class="ss" style="font-size: 14px;font-family: Ubuntu;"> 
-                        <button class="btn" routerLink="/node/{{MAC}}"><span>Learn more </span></button>
-                    </div>
-            
+
+                <div class="ss"> 
+                    <button class="btn btn-primary" routerLink="/node/{{MAC}}">Learn more</button>
+                </div>
 
         </div>
-        <!-- <ul class="mt-5">
-            <li><a href="#"><i class="fas fa-home"></i>Dashboard</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>Nodes List</a></li>
-            <li><a routerLink="/userList"><i class="fas fa-address-card"></i>Users List</a></li>
-            <li><a href="#"><i class="fas fa-project-diagram"></i>Node Requests</a></li>
-            <li><a href="#"><i class="fas fa-blog"></i>Forms</a></li>
-        </ul>  -->
-        <!-- <div class="social_media">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-      </div> -->
     </div>
     <div class="main_content">
         <div id="iotMap"></div>

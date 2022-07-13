@@ -2,3 +2,25 @@
 /*@import "~boosted/dist/css/boosted.min.css";*/
 
 @import "./app/views/iotMapManager/iot-map-manager.css";
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue"), url(./assets/fonts/HelvNeue35_W1G.ttf) format("truetype");
+  src: local("Helvetica Neue"), url(./assets/fonts/HelvNeue45_W1G.ttf) format("truetype");
+  src: local("Helvetica Neue"), url(./assets/fonts/HelvNeue55_W1G.ttf) format("truetype");
+  src: local("Helvetica Neue"), url(./assets/fonts/HelvNeue65_W1G.ttf) format("truetype");
+  src: local("Helvetica Neue"), url(./assets/fonts/HelvNeue75_W1G.ttf) format("truetype");
+}
+
+body {
+  background-color: #f6f6f6;
+  font-family: 'Helvetica Neue'
+}
+
+.btn-primary {
+  color:white;
+}
+
+.btn-primary:active{
+  color:black;
+}

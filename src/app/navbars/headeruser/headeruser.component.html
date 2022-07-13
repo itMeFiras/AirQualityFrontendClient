@@ -1,34 +1,63 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">
-        <img src="../../../assets/trylogo3.png " role="img" alt="logo" loading="lazy" style="width:200px;height:40px;">
-      </a>
 
+      <div class="navbar-brand">
+        <a class="stretched-link" routerLink="/" (click)="url = ''">
+          <img src="../../../assets/orange-logo.svg" role="img" alt="logo" loading="lazy" width="50" height="50">
+        </a>
+        <h2 class="title">Orange AQI</h2>
+      </div>
+
+      <!-- Responsive items button --> 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- Nav menu items --> 
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/map">Map</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item" *ngIf="url == 'map';else map">
+            <a class="nav-link active" aria-current="page" routerLink="/map">Map</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/userlist">Forum</a>
+          <ng-template #map>
+            <li class="nav-item">
+              <a (click)="url = 'map'" class="nav-link" routerLink="/map">Map</a>
+            </li>
+          </ng-template>
+
+          <li class="nav-item" *ngIf="url == 'forum';else forum">
+            <a class="nav-link active" aria-current="page" routerLink="/">Forum</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profile</a>
+          <ng-template #forum>
+            <li class="nav-item">
+              <a (click)="url = 'forum'" class="nav-link" routerLink="/">Forum</a>
+            </li>
+          </ng-template>
+
+          <li class="nav-item" *ngIf="url == 'myNodes';else myNodes">
+            <a class="nav-link active" aria-current="page" routerLink="/myNodes">MyNodes</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/myNodes">MyNodes</a>
-          </li>
+          <ng-template #myNodes>
+            <li class="nav-item">
+              <a (click)="url = 'myNodes'" class="nav-link" routerLink="/myNodes">MyNodes</a>
+            </li>
+          </ng-template>
         </ul>
     
-        <div class="navigation move">
+        <!-- logout button --> 
+        <div class="nav-item dropdown">
+          <a class="nav-link name" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" [style.background-color]="this.randomColor">{{item[0]}}</a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/profile">My account</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
+        <!-- <div class="navigation move">
           <a class="button" href="">
             <i class="fa fa-sign-out icon"></i>
             <div class="logout" (click)="logout()">LOGOUT</div>
           </a>
-        </div>
+        </div> -->
 
       </div>
     </div>

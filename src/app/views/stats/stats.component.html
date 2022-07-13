@@ -1,10 +1,21 @@
-    <!-- ///////////////////////////////////////// -->
-   <canvas id="canvas" width="400px" height="100">{{ chart }}</canvas>
-    <div style="float: right;margin-right: 20px;" >
-      <input type="date" min="2022-04-01" [(ngModel)]="startdate">&nbsp;
-      to <input type="date" min="2022-04-01" [(ngModel)]="enddate">&nbsp;
-      <button (click)="filterdate()">filter</button> 
+<!-- ///////////////////////////////////////// -->
+<div class="title">
+  <svg routerLink="/map" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14" role="img" aria-label="Left arrow"><path d="M9 2L7 0 0 7l7 7 2-2-5-5 5-5z"/></svg>
+  <span class="text1">{{pin.title}}</span><br>
+  <label class="text2">{{pin.desc}}</label>
+</div>
+<div style="display:flex;" class="box">
+  <div class="dates" style="display:flex;">
+    <div style="margin-right:20px">
+      <label>From</label><br>
+      <input type="date" class="date-picker" min="2022-04-01" [(ngModel)]="startdate" (change)="filterdate()">
     </div>
+    <div>
+    <label>To</label><br>
+      <input type="date" class="date-picker" min="2022-04-01" [(ngModel)]="enddate" (change)="filterdate()">&nbsp;
+    </div>
+  </div>
+  <app-csv-download style="margin-left: auto;margin-right: 0;"></app-csv-download>
+</div>
+<canvas id="canvas" width="400px" height="100">{{ chart }}</canvas>
 
-    <br>
-    <app-csv-download></app-csv-download>

@@ -14,8 +14,10 @@ export class StatsComponent implements OnInit {
   constructor(private nodeservice :NodesService, private route: ActivatedRoute) { }
   id: any
   node :any
+  pin :any
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.getByMac()
     this.getMacData()
     this.newchart()
 
@@ -33,6 +35,12 @@ export class StatsComponent implements OnInit {
   listsound :any =[]
   listtemperature :any =[]
   listttvoc :any =[]
+
+  getByMac(){
+    this.nodeservice.findByMac(this.id).subscribe(res => {
+      this.pin = res
+    })
+  }
 
   getMacData(){
     this.nodeservice.getMacData(this.id).subscribe(res => {

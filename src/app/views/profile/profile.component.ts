@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/models/users.service'; 
+import { Users } from 'src/app/models/users.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +15,11 @@ export class ProfileComponent implements OnInit {
   id: any 
   user :any
   useredit :any
+  url :string = '1'
+
+  currDiv: string | undefined
+  alert :string | undefined
+  newpass :string | undefined
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -23,13 +27,6 @@ export class ProfileComponent implements OnInit {
     this.getProfile();
     const useredit = this.user
   }
-
-  // getProfile(){
-  //   this.userService.getUserById(this.id).subscribe(res => {
-  //     console.log(res)
-  //     this.user = res
-  //   })
-  // }
 
   getProfile(){
     var currentUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -50,6 +47,19 @@ export class ProfileComponent implements OnInit {
   delete(){
     this.userService.deleteUser(this.id).subscribe()
     window.location.href=`/`
+  }
+
+  editpass(divVal: string,user : Users){
+    this.userService.editPass(this.user._id,user).subscribe((data : any) =>{
+      user = data;
+      if (data.message == "the old password is wrong !"){
+        this.alert = "The old password is wrong !"
+        this.currDiv = divVal;
+      }
+      else if (data.message == "edit success"){
+        window.location.href='/profile'
+      }
+    })
   }
 
 }

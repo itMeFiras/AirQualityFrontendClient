@@ -2,7 +2,7 @@
 <app-headervisit></app-headervisit>
 </div>
 <div *ngIf="profile == 1">
-<app-headeruser></app-headeruser>
+<app-headeruser [item]="name"></app-headeruser>
 </div>
 
 <router-outlet></router-outlet>

@@ -1,112 +1,90 @@
-<!-- left side -->
-<div class="container-lg" >
-    <div style="width: 60%; float:left;">
-        <div class="pt-5 pb-3">
-            <div class="d-flex align-items-center mb-3">
-                <i class="fa fa-user" style="width:20px; color: #ff7900;" ></i>
-                <h3 class="custom-h3-mobile mb-0" style="color: #ff7900;">Register</h3>
+<div class="mob"> 
+    <h2 class="log-line">Register</h2> 
+    <div class="mob dis" style="display: flex">
+        <!-- left side div --> 
+        <div class="leftbox">
+            <!-- success alert -->
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" *ngIf="currDiv == 'nice'">
+                <span class="alert-icon"><span class="visually-hidden">Success</span></span>
+                <p>Thank you for registration, check your e-mail for confirmation link !</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
             </div>
+            <!-- end alert -->
+
+            <form #userForm="ngForm" (ngSubmit)="register('nice',user)">
+                    <!-- username div -->
+                    <div>
+                        <label for="form-control-5" class="form-label is-required">Username</label>
+                        <input class="form-control" type="text" id="form-control-1"
+                        [(ngModel)]="user.username" name="username"
+                        #username="ngModel" required uniqueName minlength="3">
+                        <div  style="color: red" *ngIf="username.invalid && username.touched">
+                            <div *ngIf="username.errors['required']"> Username is required</div>
+                            <div *ngIf="username.errors['minlength']"> Min of 3 chars</div>
+                            <div *ngIf="username.errors['uniqueName']">Username already exist</div>
+                        </div>
+                    </div>
+                    
+                    <!-- firstname div -->
+                    <div class="mt-3">
+                        <label for="form-control-5" class="form-label is-required">First name</label>
+                        <input class="form-control" type="text" id="form-control-2"
+                        [(ngModel)]="user.firstname" name="firstname"
+                        #firstname="ngModel" required minlength="3">
+                        <div  style="color: red" *ngIf="firstname.invalid && firstname.touched">
+                            Required with min of 3 chars 
+                        </div>
+                    </div>
+
+                    <!-- lastname div -->
+                    <div class="mt-3">
+                        <label for="form-control-5" class="form-label is-required">Last name</label>
+                        <input class="form-control" type="text" id="form-control-3"
+                        [(ngModel)]="user.lastname" name="lastname"
+                        #lastname="ngModel" required minlength="3">
+                        <div  style="color: red" *ngIf="lastname.invalid && lastname.touched">
+                            Required with min of 3 chars 
+                        </div>
+                    </div>
+
+                <!-- email div -->
+                <div class="mt-3">
+                    <label for="form-control-5" class="form-label is-required">Email</label>
+                    <input class="form-control" type="email" id="form-control-5"
+                    [(ngModel)]="user.email" name="email"
+                        #email="ngModel" required uniqueEmail pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$"/>
+                        <div  style="color: #ff0000" *ngIf="email.invalid && email.touched">
+                        <div *ngIf="email.errors['required']"> Email is required</div>
+                        <div *ngIf="email.errors['pattern']">Invalid Email</div>
+                        <div *ngIf="email.errors['uniqueEmail']">Email already exist</div>
+                        </div>
+                </div>
+
+                    <!-- password div -->
+                    <div class="mt-3">
+                        <label for="exampleInputPassword1" class="form-label is-required">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                        [(ngModel)]="user.password" name="password"
+                        #password="ngModel" required minlength="3">
+                        <div  style="color: red" *ngIf="password.invalid && password.touched">
+                            Required with min of 3 chars
+                        </div>
+                    </div>
+
+                <!-- submit div -->
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Register</button>
+                </div>
+            </form>
         </div>
 
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" *ngIf="currDiv == 'nice'">
-            <span class="alert-icon"><span class="visually-hidden">Success</span></span>
-            <p>Thank you for registration, check your e-mail for confirmation link !</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
+        <!-- right side div --> 
+        <div class="rightbox">
+            <h3 class="text1">Already have an account? 
+                <span class="text3"><br>Click the button below to log in.</span>
+            </h3>
+            <a class="btn btn-secondary" routerLink="/login">Log in</a>
         </div>
 
-        <form #userForm="ngForm" (ngSubmit)="register('nice',user)">
-            <div container  style="display: flex; height: 100px;">
-                <!-- username div -->
-                <div class="form-group container" style="width:35%;">
-                    <label for="form-control-5" class="form-label is-required">Username</label>
-                    <input class="form-control" type="text" id="form-control-1"
-                    [(ngModel)]="user.username" name="username"
-                    #username="ngModel" required uniqueName minlength="3">
-                    <div  style="color: red" *ngIf="username.invalid && username.touched">
-                        <div *ngIf="username.errors['required']"> Username is required</div>
-                        <div *ngIf="username.errors['minlength']"> Min of 3 chars</div>
-                        <div *ngIf="username.errors['uniqueName']">Username already exist</div>
-                    </div>
-                </div>
-                
-                <!-- firstname div -->
-                <div class="container" style="width:35%;">
-                    <label for="form-control-5" class="form-label is-required">First name</label>
-                    <input class="form-control" type="text" id="form-control-2"
-                    [(ngModel)]="user.firstname" name="firstname"
-                    #firstname="ngModel" required minlength="3">
-                    <div  style="color: red" *ngIf="firstname.invalid && firstname.touched">
-                        Required with min of 3 chars 
-                    </div>
-                </div>
-
-                <!-- lastname div -->
-                <div class="container" style="width:35%;">
-                    <label for="form-control-5" class="form-label is-required">Last name</label>
-                    <input class="form-control" type="text" id="form-control-3"
-                    [(ngModel)]="user.lastname" name="lastname"
-                    #lastname="ngModel" required minlength="3">
-                    <div  style="color: red" *ngIf="lastname.invalid && lastname.touched">
-                        Required with min of 3 chars 
-                    </div>
-                </div>
-            </div>
-
-            <!-- email div -->
-            <div class="container" style="width:100%; height: 100px;">
-                <label for="form-control-5" class="form-label is-required">Email</label>
-                <input class="form-control" type="email" id="form-control-5"
-                [(ngModel)]="user.email" name="email"
-                    #email="ngModel" required uniqueEmail pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$"/>
-                    <div  style="color: #ff0000" *ngIf="email.invalid && email.touched">
-                    <div *ngIf="email.errors['required']"> Email is required</div>
-                    <div *ngIf="email.errors['pattern']">Invalid Email</div>
-                    <div *ngIf="email.errors['uniqueEmail']">Email already exist</div>
-                    </div>
-            </div>
-
-            <div container  style="display: flex; height: 100px;">
-                <!-- password div -->
-                <div class="container" style="width:100%;">
-                    <label for="exampleInputPassword1" class="form-label is-required">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                    [(ngModel)]="user.password" name="password"
-                    #password="ngModel" required minlength="3">
-                    <div  style="color: red" *ngIf="password.invalid && password.touched">
-                        Required with min of 3 chars
-                    </div>
-                </div>
-
-                <!-- confirm password div -->
-                <!-- <div class="container" style="width:50%;">
-                    <label for="exampleInputPassword2" class="form-label is-required">Confirm Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" required minlength="3">
-                </div> -->
-            </div>
-
-            <!-- submit div -->
-            <div class="pt-3">
-                <button type="submit" class="btn btn-primary" style="width: 100%;" 
-                [disabled]="!userForm.valid">Register</button>
-            </div>
-            
-        </form>
     </div>
-    
-
-    <!-- right side -->
-    <div style=" float: right;position: fixed;margin-left: 60%;" >
-        <div class="col-lg-4 bg-dark d-none d-lg-block position-absolute" style="height: 1000px;width: 500px;">
-            <div class="align-items-center">
-                <div class="col px-5 h4 pt-5">
-                    <span class="d-block my-4" style="text-align: center;">Create your new account now</span>
-                </div>
-            </div>
-            <div class="mt-5" style="margin-left: 50px;">
-                <img src="../../../assets/makeaccount.jpg" alt="MakeAccount">
-            </div>
-        </div>
-    </div>     
-</div> 
-
-    
+</div>

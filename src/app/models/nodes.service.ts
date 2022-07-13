@@ -21,6 +21,10 @@ export class NodesService {
     return this.http.get(this.ROOT_URL+'pins/list/'+id)
   }
 
+  findByMac(mac:string){
+    return this.http.get<any[]>(this.ROOT_URL+'pins/getbymac?MAC='+ mac)
+  }
+
   getLastData(mac : any): Observable<any>{
     return this.http.get(this.ROOT_URL+'node/lastmacdata?MAC='+mac)
   }

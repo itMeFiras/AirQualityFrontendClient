@@ -1,103 +1,101 @@
-<!-- Main -->
-<div class="d-flex align-items-center mb-3 mt-5" style="margin-left: 15%;">
-    <i class="fa fa-user" style="width:20px; color: #ff7900;" ></i>
-    <h3 class="custom-h3-mobile mb-0" style="color: #ff7900;">Account</h3>
-</div>
-<div class="container" style="display: flex; width: 20%;margin-left: 80%;">
-        <button type="button" class="editbtn" data-bs-toggle="modal" data-bs-target="#editModal" >Edit Profile</button>
-        <!-- <button type="button" class="deletebtn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Profile</button> -->
-</div>
+<div class="box">
+  <!-- nav links -->
+  <h2 class="mt-5">My account</h2>
+  <ul class="nav nav-tabs nav-tabs-light mt-5">
+    <li class="nav-item" *ngIf="url == '1';else m1">
+      <a class="nav-link aa">Activities</a>
+    </li>
+    <ng-template #m1>
+      <li class="nav-item">
+        <a (click)="url = '1'" class="nav-link inactive">Activities</a>
+      </li>
+    </ng-template>
 
-<div class="main container">
-    <!-- Informations box -->
-    <h2>Informations</h2>
-    <div class="card">
-        <div class="card-body">
-            <i class="fa fa-pen fa-xs edit"></i>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>UserName</td>
-                        <td>:</td>
-                        <td>{{user.username}}</td>
-                    </tr>
-                    <tr>
-                        <td>First Name</td>
-                        <td>:</td>
-                        <td>{{user.firstname}}</td>
-                    </tr>
-                    <tr>
-                        <td>Last Name</td>
-                        <td>:</td>
-                        <td>{{user.lastname}}</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>:</td>
-                        <td>{{user.email}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <li class="nav-item" *ngIf="url == '2';else m2">
+      <a class="nav-link aa">My personnals informations</a>
+    </li>
+    <ng-template #m2>
+      <li class="nav-item">
+        <a (click)="url = '2'" class="nav-link inactive">My personnals informations</a>
+      </li>
+    </ng-template>
+
+    <li class="nav-item" *ngIf="url == '3';else m3">
+      <a class="nav-link aa">Change password</a>
+    </li>
+    <ng-template #m3>
+      <li class="nav-item">
+        <a (click)="url = '3'" class="nav-link inactive">Change password</a>
+      </li>
+    </ng-template>
+  </ul>
+
+
+  <!-- main 1 -->
+  <div class="box1 pt-5 pb-4" *ngIf="url == '1'">
+    <div style="width: 100%; display: flex;">
+      <div style="width: 33.3%;">
+          <label>Personal Nodes</label>
+          <h1 class="text">2</h1>
+      </div>
+      <div style="width: 33.3%;">
+          <label>Posted Discossions</label>
+          <h1 class="text">5</h1>
+      </div>
+      <div style="width: 33.3%;">
+          <label>Posted Repley</label>
+          <h1 class="text">30</h1>
+      </div>
     </div>
+  </div>
 
-    <!-- Activities box -->
-    <h2>Activities</h2>
-    <div class="card" style="margin-bottom: 50px;" >
-        <div class="card-body">
-            <div style="width: 100%; display: flex;">
-                <div style="width: 35%;">
-                    <div style="margin-bottom: 10px;">Personal Nodes :</div>
-                    <div class="numberCircle">2</div>
-                </div>
-                <div style="width: 35%;">
-                    <div style="margin-bottom: 10px;">Posted Discossions :</div>
-                    <div class="numberCircle">5</div>
-                </div>
-                <div style="width: 35%;">
-                    <div style="margin-bottom: 10px;">Posted Repley :</div>
-                    <div class="numberCircle">30</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- End -->
-
-
-  <!-- Edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Edit your profile</h5> 
-          <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
-        </div>
-        
+  <!-- main 2 -->
+  <div class="box1 pt-5 pb-4" *ngIf="url == '2'">
+    <div style="width: 100%; display: flex;">
+      <div style="width: 50%;">
         <app-edit-profile></app-edit-profile>
+      </div>
+    </div>
+  </div>
+
+  <!-- main 3 -->
+  <div class="box1 pt-5 pb-4" *ngIf="url == '3'">
+    <div style="width: 100%; display: flex;">
+      <div style="width: 50%;">
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert" *ngIf="currDiv == 'nice'">
+          <span class="alert-icon"><span class="visually-hidden">Failed</span></span>
+          <p>{{alert}}</p>
+        </div>
+
+        <form #userForm="ngForm" (ngSubmit)="editpass('nice',user)" class="bf">
+
+                <label for="form-control-5" class="form-label is-required">Old Password</label>
+                <input class="form-control" type="password" id="form-control-2"
+                [(ngModel)]="user.password" name="password"
+                #password="ngModel" required minlength="3">
+                <div  style="color: red" *ngIf="password.invalid && password.touched">
+                    3 chars min
+                </div>
+
+              <div class="mt-3">
+                <label for="form-control-5" class="form-label is-required">New Password</label>
+                <input class="form-control" type="password" id="form-control-3"
+                [(ngModel)]="user.newpass" name="newpass"
+                #newpass="ngModel" required minlength="3">
+                <div  style="color: red" *ngIf="newpass.invalid && newpass.touched">
+                    3 chars min
+                </div>
+              </div>
+
+                <div>
+                  <button type="submit" class="btn btn-primary mt-4" style="width: 100%;" 
+                  [disabled]="!userForm.valid" >Edit Password</button>
+                </div>          
+        </form>
 
       </div>
     </div>
   </div>
 
-
-
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
-        </div>
-        <div class="modal-body">
-          Are you sure you want delete your profile ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
