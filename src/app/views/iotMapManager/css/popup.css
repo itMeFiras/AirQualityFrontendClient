@@ -37,7 +37,7 @@
   box-sizing: border-box;
   height: auto;
   max-height: 600px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   opacity: 1;
 
   background-color: white;
@@ -46,12 +46,12 @@
   padding: 10px 15px 30px;
   font-family: 'Helvetica Neue', 'helvetica';
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   z-index: 0;
 }
 
 .iotmap-marker-selected > .iotmap-marker-popup .iotmap-pop-up-title {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .iotmap-marker-selected > .iotmap-marker-popup .iotmap-pop-up-body {

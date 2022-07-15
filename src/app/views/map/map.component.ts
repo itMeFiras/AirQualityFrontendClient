@@ -37,10 +37,9 @@ export class MapComponent implements AfterViewInit {
 
     this.conf.setConfig(
      {
-       map : {defaultLat:36.8349084,defaultLng: 10.2432562}
+       map : {defaultLat:36.8349084,defaultLng: 10.2432562,defaultZoomLevel: 13,}
      }
     )
-
   }
 
   clickednode : any
@@ -56,7 +55,6 @@ export class MapComponent implements AfterViewInit {
     temperature:String=''
     tvoc:String=''
     received_at:String=''
-
 
   nodeList :any = [] ;
   PoiID:string="";
@@ -76,13 +74,13 @@ export class MapComponent implements AfterViewInit {
             lng: val.long
           },
           //template: 'square',
-          layer: 'Orange',
+          layer: 'Active',
           status: 'neutiral', // 'warning','alert'
           // tab: {
           //   content: '<span class="iotmap-icons-vehicle"></span>'
           // },
           inner: {
-            icon: '',
+            img: '',
             color: 'black'
           },
           popup: {
@@ -95,6 +93,11 @@ export class MapComponent implements AfterViewInit {
             plain: true,
             color : "#ff7900",
           },
+        }
+        if (val.operate == "No"){
+          a.shape.color = "#545454"
+          a.layer = "Inactive"
+          //a.inner.img = 'https://c.woopic.com/logo-orange.png'
         }
         if (val.active == "active"){
           this.markersList.push(a)
@@ -109,163 +112,7 @@ export class MapComponent implements AfterViewInit {
 
 
   // static list of all marker types on the map
-  markersList: IotMarker[] = [
-    //poi
-    {
-      id: 's2',
-      location: {
-        lat: 44.895,
-        lng: 4.875
-      },
-      popup: {
-        title: 'Ecole Jean Rostand : <a href="http://www.google.fr"> test </a>',
-        body: '<a href="https://bv.ac-grenoble.fr/carteforpub/uai/0260969M">ici</a>'
-      },
-      template: 'square',
-      status: 'test', // 'neutral',
-      tab: {
-        content: 'POI',
-        type: TabType.large
-      }
-    },
-
-    //white-blue square
-    {
-      id: 's6',
-      location: {
-        lat: 44.895,
-        lng: 4.895
-      },
-      template: 'square'
-    },
-
-    //orange logo
-    {
-      id: 's7',
-      location: {
-        lat: 44.895,
-        lng: 4.885
-      },
-      shape: {
-        type: ShapeType.square,
-        anchored: true,
-        plain: false // ,
-        // accuracy: 200
-      },
-      inner: {
-        img: 'https://c.woopic.com/logo-orange.png',
-        color: 'green'
-      },
-      layer: 'etablissements',
-      status: 'inactive'
-    },
-    
-    //white-green square
-    {
-      id: 'p1',
-      location: {
-        lat: 44.890,
-        lng: 4.870
-      },
-      shape: {
-        type: ShapeType.square,
-        anchored: false,
-        plain: false
-      },
-      layer: 'etablissements',
-      inner: {
-        icon: 'iotmap-icons-School',
-        color: 'blue'
-      },
-      status: 'positive'
-    },
-
-    //blue square
-    {
-      id: 'p2',
-      location: {
-        lat: 44.890,
-        lng: 4.875
-      },
-      popup: {
-        title: 'Title',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.'
-      },
-      shape: {
-        type: ShapeType.square,
-        anchored: true,
-        plain: true
-      },
-      inner: {
-        icon: 'iotmap-icons-School',
-        color: 'navyblue'
-      },
-      layer: 'etablissements',
-      status: 'neutral'
-    },
-
-    //yellow circle
-    {
-      id: 'p3',
-      location: {
-        lat: 44.890,
-        lng: 4.880
-      },
-      template: 'monument',
-      status: 'warning'
-    },
-    //red circle
-    {
-      id: 'p4',
-      location: {
-        lat: 44.890,
-        lng: 4.885
-      },
-      template: 'monument',
-      status: 'alert'
-    },
-
-    //gray square
-    {
-      id: 'p5',
-      location: {
-        lat: 44.890,
-        lng: 4.890
-      },
-      shape: {
-        type: ShapeType.square,
-        anchored: true,
-        plain: true,
-        // accuracy: 300
-      },
-      layer: 'etablissements',
-      inner: {
-        icon: 'iotmap-icons-hospital',
-        color: 'white'
-      },
-      status: 'inactive'
-    },
-    //black square
-    {
-      id: 'p6',
-      location: {
-        lat: 44.890,
-        lng: 4.895
-      },
-      shape: {
-        type: ShapeType.square,
-        plain: true,
-        anchored: false
-      },
-      layer: 'etablissements',
-      inner: {
-        icon: 'iotmap-icons-map_pin',
-        color: 'white'
-      }
-    }
-  ];
-
-
+  markersList: IotMarker[] = [];
 
   ngAfterViewInit (): void {
     this.conf.setConfig({
@@ -320,13 +167,11 @@ export class MapComponent implements AfterViewInit {
 
 
     this.commonIotMap.onEltClick = (event) =>{
-      console.log(event)
-
+      //console.log(event)
       this.nodeservice.findOne(event).subscribe(res => {
         this.clickednode = res
         console.log(this.clickednode)
         this.clickedmac = this.clickednode.MAC
-
 
         this.nodeservice.getLastData(this.clickedmac).subscribe(res => {
           this.clickedinfo = res[0]
@@ -342,10 +187,7 @@ export class MapComponent implements AfterViewInit {
           this.tvoc= this.clickedinfo.tvoc
           this.received_at = this.clickedinfo.received_at.slice(0,10)+' '+this.clickedinfo.received_at.slice(11,19)
         })
-  
       })
-
-      
     }
     
 
@@ -353,11 +195,6 @@ export class MapComponent implements AfterViewInit {
     this.iotMapMarkerManager.addMarkers(this.markersList)
     // Do the same when you want to override the zoom on a clicked cluster
     this.iotMapClusterManager.updateCluster('cluster 1', { markersArea: new LatLngBounds([44.880, 4.89], [44.885, 4.9])})
-
-
   }
-
-
-
 
 }
