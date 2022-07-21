@@ -39,9 +39,12 @@ const appRoutes : Routes = [
   {path: 'map', component:MapComponent},
   {path: 'profile/edit/:id',component:EditProfileComponent},
   {path: 'home',component:HomeComponent},
-  {path: 'node/:id',component:StatsComponent},
+  {path: 'map/node/:id',component:StatsComponent},
   {path: 'myNodes',component:MyNodesComponent},
-  {path: 'request',component:RequestComponent},
+  {path: 'myNodes/request',component:RequestComponent},
+  //{ path: '**', component:HomeComponent},
+  {path : "**" , redirectTo:"map"},
+
 ]
 
 @NgModule({

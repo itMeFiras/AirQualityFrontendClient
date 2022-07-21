@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../models/users.service'
 import { Users } from 'src/app/models/users.model';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersService:UsersService, private toastr:ToastrService) { }
+  constructor(private usersService:UsersService) { }
 
   user: Users = new Users;
   currDiv: string | undefined

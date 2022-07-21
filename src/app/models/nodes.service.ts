@@ -33,6 +33,9 @@ export class NodesService {
     return this.http.get(this.ROOT_URL+'node/macdata2?mac='+mac)
   }
 
+  checknode(mac:any): Observable<any>{
+    return this.http.get(this.ROOT_URL+'node/checknode?MAC='+mac)
+  }
 
   //request service
   makePinRequest(auth_token: any,data:Request):Observable<Request>{

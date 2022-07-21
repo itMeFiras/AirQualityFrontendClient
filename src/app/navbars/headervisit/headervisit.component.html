@@ -13,26 +13,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <!-- Nav menu items --> 
+    <!-- Nav menu items -->
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngIf="url == 'map';else map">
-          <a class="nav-link active" aria-current="page" routerLink="/map">Map</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/map">Map</a>
         </li>
-        <ng-template #map>
-          <li class="nav-item">
-            <a (click)="url = 'map'" class="nav-link" routerLink="/map">Map</a>
-          </li>
-        </ng-template>
-
-        <li class="nav-item" *ngIf="url == 'forum';else forum">
-          <a class="nav-link active" aria-current="page" routerLink="/">Forum</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/home">Forum</a>
         </li>
-        <ng-template #forum>
-          <li class="nav-item">
-            <a (click)="url = 'forum'" class="nav-link" routerLink="/">Forum</a>
-          </li>
-        </ng-template>
       </ul>
 
       <!-- login button --> 

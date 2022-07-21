@@ -9,38 +9,48 @@
             <h4 style="margin-top:15px">You do not have any personal nodes</h4>
           </div>
             <p class="mt-5 text">Please make a request if you want to join our network.</p>
-            <button type="button" class="mb-3 btn btn-primary" routerLink="/request">Make a new Node request</button>
+            <div *ngIf="requests.length" class="pb-3"> You have {{requests.length}} requests pending</div>
+            <button type="button" class="mb-3 btn btn-primary" routerLink="/myNodes/request">Make a new Node request</button>
         <!-- </div> -->
     </div>
 
     <div *ngIf="node[0] != null">
       <div class="table-responsive">
         <h2 class="mt-4">Personal Nodes</h2>
+        <div *ngIf="requests.length" class="pb-3"> You have {{requests.length}} requests pending</div>
         <table class="table table-hover mt-4">
             <thead>
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
-                <th scope="col">Lat</th>
-                <th scope="col">Long</th>
-                <th scope="col">Displayed on the map</th>
+                <th scope="col">Location</th>
+                <th scope="col">Map displayed</th>
+                <th scope="col">Active</th>
+                <th scope="col">Test</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let u of node, let i = index">
-                <td>{{u.title}}</td>
+                <td>{{u.MAC}}</td>
                 <td>{{u.desc}}</td>
-                <td>{{u.lat}}</td>
-                <td>{{u.long}}</td>
+                <td>( {{u.lat.slice(0,6)}} ; {{u.long.slice(0,6)}} )</td>
                 <td *ngIf="u.active == 'active'">Yes</td>
                 <td *ngIf="u.active == 'inactive'">No</td>
+                <td>{{u.operate}}</td>
+                <td>
+                  <span (click)="checknode(u.MAC)" style="cursor: pointer">
+                      <svg id="Functional_UI_ic_Start_over" data-name="Functional_UI / ic_Start_over" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <rect id="Box" width="24" height="24" fill="#fff" opacity="0"/>
+                        <path id="Shape" d="M12.6,22.2a9,9,0,0,1-8.89-7.61A1.2,1.2,0,0,1,4.9,13.2h0a1.2,1.2,0,0,1,1.184,1.018A6.6,6.6,0,1,0,12.548,6.6H11.4v3L9,7.211,7.205,5.42,9,3.611,11.4,1.2v3h1.2a9,9,0,0,1,0,18ZM7.8,7.211V9.6l-4.2-4.18L7.8,1.2V3.611L6.006,5.42Z" fill-rule="evenodd"/>
+                      </svg>
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-      
-
-          <button type="button" class="mt-4 mb-3 btn btn-primary" routerLink="/request">Add new request</button>
+        {{msg}}<br>
+        <button type="button" class="mt-4 mb-3 btn btn-primary" routerLink="/myNodes/request">Add new request</button>
     </div>
 
 </div>

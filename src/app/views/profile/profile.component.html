@@ -1,7 +1,7 @@
 <div class="box">
   <!-- nav links -->
   <h2 class="mt-5">My account</h2>
-  <ul class="nav nav-tabs nav-tabs-light mt-5">
+  <ul class="nav nav-tabs nav-tabs-light nav-fill mt-5">
     <li class="nav-item" *ngIf="url == '1';else m1">
       <a class="nav-link aa">Activities</a>
     </li>
@@ -35,16 +35,16 @@
   <div class="box1 pt-5 pb-4" *ngIf="url == '1'">
     <div style="width: 100%; display: flex;">
       <div style="width: 33.3%;">
-          <label>Personal Nodes</label>
-          <h1 class="text">2</h1>
+          <label class="text1">Personal Nodes</label>
+          <h1 class="text2">{{i}}</h1>
       </div>
       <div style="width: 33.3%;">
-          <label>Posted Discossions</label>
-          <h1 class="text">5</h1>
+          <label class="text1">Active Nodes</label>
+          <h1 class="text2">{{j}}</h1>
       </div>
       <div style="width: 33.3%;">
-          <label>Posted Repley</label>
-          <h1 class="text">30</h1>
+          <label class="text1">Inactive Nodes</label>
+          <h1 class="text2">{{k}}</h1>
       </div>
     </div>
   </div>

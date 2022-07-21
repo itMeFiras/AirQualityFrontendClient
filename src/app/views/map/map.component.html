@@ -23,7 +23,7 @@
                     {{received_at}}
                 </div>
 
-                <div style="height: 480px;max-height: 480px; overflow: auto;">
+                <div class="node">
                     <!-- co2 div -->
                     <div *ngIf="co2 !null" class="box">
                         &nbsp;&nbsp;
@@ -130,8 +130,8 @@
 
                 </div>
 
-                <div class="ss"> 
-                    <button class="btn btn-primary" routerLink="/node/{{MAC}}">Learn more</button>
+                <div class="mt-3"> 
+                    <button class="btn btn-primary" routerLink="/map/node/{{MAC}}">Learn more</button>
                 </div>
 
         </div>

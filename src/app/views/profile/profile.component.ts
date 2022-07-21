@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/models/users.service'; 
+import { NodesService } from 'src/app/models/nodes.service';
 import { Users } from 'src/app/models/users.model';
 
 @Component({
@@ -10,7 +11,7 @@ import { Users } from 'src/app/models/users.model';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService : UsersService, private route: ActivatedRoute) { }
+  constructor(private userService : UsersService, private route: ActivatedRoute, private NodesService:NodesService) { }
 
   id: any 
   user :any
@@ -21,10 +22,16 @@ export class ProfileComponent implements OnInit {
   alert :string | undefined
   newpass :string | undefined
 
+  node :any
+  i :any
+  j :any
+  k :any
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     console.log(this.id)
     this.getProfile();
+    this.getMyNode();
     const useredit = this.user
   }
 
@@ -40,6 +47,28 @@ export class ProfileComponent implements OnInit {
         this.user = Object.values(res)[0]
         this.user.password =""
         console.log(this.user._id)
+      }
+    })
+  }
+
+  getMyNode(){
+    var currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+    var token = currentUser.token;
+
+    this.NodesService.getPersonalNode(token).subscribe(res => {
+      if (res == "you dont have access" || res == "no token sent" ){
+        window.location.href=`/`
+      }
+      else {
+        this.node = res
+        this.i = 0
+        this.j = 0 
+        this.k = 0
+        for (let r of this.node){
+          this.i=this.i+1
+          if (r.operate == "Yes")this.j=this.j+1
+          if (r.operate == "No")this.k=this.k+1
+        }
       }
     })
   }

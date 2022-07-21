@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from 'src/app/models/users.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,16 @@ export class AppComponent {
   title = 'Frontend';
 
   /////////////
-  constructor(private userService : UsersService) { }
+  constructor(private userService : UsersService,private router: Router) { }
   profile : any
   user:any
   name:any
+  url:any
 
   ngOnInit(): void {
     this.getProfile();
+    this.url = this.router.url
+
   }
 
   getProfile(){

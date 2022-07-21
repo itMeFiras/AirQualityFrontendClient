@@ -16,32 +16,15 @@
       <!-- Nav menu items --> 
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-          <li class="nav-item" *ngIf="url == 'map';else map">
-            <a class="nav-link active" aria-current="page" routerLink="/map">Map</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/map">Map</a>
           </li>
-          <ng-template #map>
-            <li class="nav-item">
-              <a (click)="url = 'map'" class="nav-link" routerLink="/map">Map</a>
-            </li>
-          </ng-template>
-
-          <li class="nav-item" *ngIf="url == 'forum';else forum">
-            <a class="nav-link active" aria-current="page" routerLink="/">Forum</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/home">Forum</a>
           </li>
-          <ng-template #forum>
-            <li class="nav-item">
-              <a (click)="url = 'forum'" class="nav-link" routerLink="/">Forum</a>
-            </li>
-          </ng-template>
-
-          <li class="nav-item" *ngIf="url == 'myNodes';else myNodes">
-            <a class="nav-link active" aria-current="page" routerLink="/myNodes">MyNodes</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/myNodes">MyNodes</a>
           </li>
-          <ng-template #myNodes>
-            <li class="nav-item">
-              <a (click)="url = 'myNodes'" class="nav-link" routerLink="/myNodes">MyNodes</a>
-            </li>
-          </ng-template>
         </ul>
     
         <!-- logout button --> 
@@ -52,12 +35,6 @@
             <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
           </ul>
         </div>
-        <!-- <div class="navigation move">
-          <a class="button" href="">
-            <i class="fa fa-sign-out icon"></i>
-            <div class="logout" (click)="logout()">LOGOUT</div>
-          </a>
-        </div> -->
 
       </div>
     </div>

@@ -1,9 +1,11 @@
 <div *ngIf="profile == 0">
-<app-headervisit></app-headervisit>
+    <app-headervisit></app-headervisit>
 </div>
 <div *ngIf="profile == 1">
-<app-headeruser [item]="name"></app-headeruser>
+    <app-headeruser [item]="name"></app-headeruser>
 </div>
-
+<div *ngIf="url == ''">
+    <app-map></app-map>
+</div>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

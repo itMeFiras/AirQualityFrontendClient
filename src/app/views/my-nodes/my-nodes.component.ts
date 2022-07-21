@@ -13,6 +13,7 @@ export class MyNodesComponent implements OnInit {
   user:any
   requests:any
   node:any
+  msg:any
 
   ngOnInit(): void {
     this.getProfile()
@@ -45,7 +46,7 @@ export class MyNodesComponent implements OnInit {
       else {
       this.requests = res
       console.log("-----------")
-      console.log(this.requests[0])
+      console.log(this.requests)
       }
     })
   }
@@ -60,9 +61,14 @@ export class MyNodesComponent implements OnInit {
       }
       else {
       this.node = res
-      console.log("node xD")
-      console.log(this.node)
       }
+    })
+  }
+
+  checknode(mac:any){
+    this.NodesService.checknode(mac).subscribe(res => {
+      this.msg= res
+      this.getMyNode()
     })
   }
 
